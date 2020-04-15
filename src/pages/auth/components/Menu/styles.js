@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Row } from 'react-bootstrap';
 import Link from 'components/Link';
 import Avatar from 'components/Avatar';
+import { calcFontSizeAvatar } from 'utils/calcFontSize';
 
 export const Container = styled(Row)``;
 
@@ -23,6 +24,7 @@ export const Header = styled(Row)`
 export const HeaderAvatar = styled(Avatar)`
     @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
         width: 45px;
+        font-size: ${calcFontSizeAvatar(45)}px !important;
     }
 `;
 

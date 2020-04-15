@@ -1,0 +1,1 @@
+export const calcFontSizeAvatar = (size = 60) => size ? (size * 25) / 60 : 25; // (size * fontSizeDefault) / sizeImageDefault

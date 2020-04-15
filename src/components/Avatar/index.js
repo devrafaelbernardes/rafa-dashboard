@@ -1,10 +1,11 @@
 import React from 'react';
 import NoImage from 'assets/images/no-image.png';
 import { DefaultImage, UserAvatar, UserImage } from './styles';
+import { calcFontSizeAvatar } from 'utils/calcFontSize';
 
 export function Avatar({ title, image, size, noExpansive, className }) {
     size = size || 60;
-    let fontSize = size ? (size * 25) / 60 : 25; // (size * fontSizeDefault) / sizeImageDefault
+    let fontSize = calcFontSizeAvatar(size);
     title = title && title[0] ? title[0] : null;
 
     className = className ? className : "";
