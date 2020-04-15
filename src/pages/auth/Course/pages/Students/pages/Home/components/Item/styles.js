@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Row, Image } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { ButtonContained } from 'components/Button';
 
 export const Container = styled(Row)`
@@ -8,32 +8,30 @@ export const Container = styled(Row)`
 `;
 
 export const Header = styled(Row)`
-    padding: 0;
+    padding: 15px;
+    background: ${({ theme }) => theme.colors.backgrounds.primary};
 `;
 
-export const HeaderImage = styled(Image)`
-    width: 100%;
+export const BodyInfo = styled(Row)`
     padding: 0;
+    align-items: center;
 `;
 
-export const HeaderInfo = styled(Row)`
-    padding: 0;
-    align-items: flex-end;
-    justify-content: space-between;
-`;
-
-export const HeaderTitle = styled.div`
+export const BodyTitle = styled.div`
     margin-top:10px;
+    margin-right: 7px;
     padding: 0;
-    font-size: ${({ theme }) => theme.sizes.fonts.large};
+    font-size: ${({ theme }) => theme.sizes.fonts.small};
+    color: ${({ theme }) => theme.colors.text};
     line-height: 1.2;
 `;
 
-export const HeaderDate = styled.div`
+export const BodyDate = styled.div`
     margin-top:10px;
     padding: 0;
     font-size: ${({ theme }) => theme.sizes.fonts.small};
-    color: ${({ theme }) => theme.colors.text_light};
+    color: ${({ theme }) => theme.colors.text};
+    font-weight: bold;
 `;
 
 export const Body = styled(Row)`

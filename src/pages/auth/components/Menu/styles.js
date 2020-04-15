@@ -16,13 +16,13 @@ export const Header = styled(Row)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
+    @media screen and (max-width : ${({ theme }) => theme.sizes.md}){
         padding-bottom: 10px;
     }
 `;
 
 export const HeaderAvatar = styled(Avatar)`
-    @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
+    @media screen and (max-width : ${({ theme }) => theme.sizes.md}){
         max-width: 45px !important;
         max-height: 45px !important;
         font-size: ${calcFontSizeAvatar(45)}px !important;
@@ -37,7 +37,7 @@ export const HeaderTitle = styled(Link)`
         color: ${({ theme }) => theme.colors.text_light};
     }
 
-    @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
+    @media screen and (max-width : ${({ theme }) => theme.sizes.md}){
         display: none;
     }
 `;
@@ -66,7 +66,7 @@ export const OptionMenu = styled(Link).attrs({activeClassName})`
         background: ${({ theme }) => theme.colors.primary};
     }
 
-    @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
+    @media screen and (max-width : ${({ theme }) => theme.sizes.md}){
         padding: 15px;
         margin-left: 5px;
         margin-right: 5px;
@@ -80,8 +80,9 @@ export const Icon = styled.span`
     width: 40px !important;
     margin-right: 10px;
 
-    @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
+    @media screen and (max-width : ${({ theme }) => theme.sizes.md}){
         width: 100% !important;
+        min-width: 20px !important;
         margin-right: 0;
         font-size: 16px;
     }

@@ -121,11 +121,13 @@ export function Home() {
                             const date = item[COURSE_STUDENT.CREATED_AT];
                             const student = item[COURSE_STUDENT.STUDENT];
                             let name = null;
+                            let email = null;
                             let image = null;
                             let studentId = null;
                             if (student) {
                                 studentId = student[STUDENT.ID];
                                 name = student[STUDENT.FULL_NAME];
+                                email = student[STUDENT.EMAIL];
                                 image = getImageUser(student[STUDENT.PROFILE_IMAGE]);
                             }
                             return (
@@ -135,6 +137,7 @@ export function Home() {
                                     <StudentGeneral>
                                         <Student
                                             title={name}
+                                            subtitle={email}
                                             image={image}
                                             date={date}
                                             onRemove={() => remove(objectMutation({ courseId, studentId }))}

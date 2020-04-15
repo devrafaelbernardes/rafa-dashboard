@@ -46,31 +46,4 @@ export const CardItem = styled(Card)`
     padding: 15px;
 `;
 
-export const ContainerItemGeneral = styled(Row)`
-    justify-content: center;
-`;
-
-export const ContainerItemHeader = styled(Row)`
-    justify-content: center;
-    margin-bottom: 10px;
-`;
-
-export const ContainerItemTitle = styled(Row)`
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-family: ${({ theme }) => theme.fonts.normal};
-    font-size: ${({ theme }) => theme.sizes.fonts.normal};
-`;
-
-export const ContainerItemSubtitle = styled(Row)`
-    justify-content: center;
-    align-items: center;
-    font-family: ${({ theme }) => theme.fonts.small};
-    font-size: ${({ theme }) => theme.sizes.fonts.normal};
-`;
-
-
-export const ContainerItemBody = styled(Row)``;
-
 export const ButtonLoadMore = styled(ButtonOutlined)``;

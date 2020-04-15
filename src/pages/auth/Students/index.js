@@ -6,11 +6,6 @@ import {
     Header,
     Body,
     Footer,
-    ContainerItemTitle,
-    ContainerItemSubtitle,
-    ContainerItemBody,
-    ContainerItemHeader,
-    ContainerItemGeneral,
     HeaderTitle,
     ButtonLoadMore,
     ContainerItem,
@@ -26,33 +21,15 @@ import { PAGINATION, PAGE_INFO, STUDENT } from 'services/api/responseAPI';
 import Texts from 'config/Texts';
 import ComponentLoading from 'components/ComponentLoading';
 import List from 'components/List';
-import Avatar from 'components/Avatar';
+import Student from 'components/Student';
 
-const Item = memo(({ title, subtitle, image, ...props }) => {
+const Item = memo(({ ...props }) => {
     return (
-        <ContainerItemGeneral {...props}>
-            <ContainerItemHeader>
-                <Avatar
-                    title={title}
-                    image={image}
-                    size={100}
-                />
-            </ContainerItemHeader>
-            <ContainerItemBody>
-                {
-                    title &&
-                    <ContainerItemTitle>
-                        {title}
-                    </ContainerItemTitle>
-                }
-                {
-                    subtitle &&
-                    <ContainerItemSubtitle>
-                        {subtitle}
-                    </ContainerItemSubtitle>
-                }
-            </ContainerItemBody>
-        </ContainerItemGeneral>
+        <ContainerItem>
+            <CardItem>
+                <Student {...props} />
+            </CardItem>
+        </ContainerItem>
     );
 });
 
@@ -143,17 +120,12 @@ export function Students() {
                             items={students}
                             renderItem={(item, key) => {
                                 return (
-                                    <ContainerItem
+                                    <Item
                                         key={key}
-                                    >
-                                        <CardItem>
-                                            <Item
-                                                image={getImageUser(item[STUDENT.PROFILE_IMAGE])}
-                                                title={item[STUDENT.FULL_NAME]}
-                                                subtitle={item[STUDENT.EMAIL]}
-                                            />
-                                        </CardItem>
-                                    </ContainerItem>
+                                        image={getImageUser(item[STUDENT.PROFILE_IMAGE])}
+                                        title={item[STUDENT.FULL_NAME]}
+                                        subtitle={item[STUDENT.EMAIL]}
+                                    />
                                 );
                             }}
                         />
