@@ -23,7 +23,8 @@ export const Header = styled(Row)`
 
 export const HeaderAvatar = styled(Avatar)`
     @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
-        width: 45px;
+        max-width: 45px !important;
+        max-height: 45px !important;
         font-size: ${calcFontSizeAvatar(45)}px !important;
     }
 `;
