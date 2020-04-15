@@ -17,8 +17,10 @@ export const UserImage = styled(ContentImage)`
 `;
 
 export const UserAvatar = styled(Avatar)`
-    width: ${ ({ size }) => `${size}px`} !important;
-    height: ${ ({ size }) => `${size}px`} !important;
+    width: 100%;
+    height: 100%;
+    max-width: ${ ({ size }) => `${size}px`} !important;
+    max-height: ${ ({ size }) => `${size}px`} !important;
     font-size: ${ ({ fontSize }) => `${fontSize}px`} !important;
     background: ${ ({ theme }) => theme.colors.primary} !important;
     border-radius: ${ ({ theme }) => theme.sizes.border_radius} !important;
