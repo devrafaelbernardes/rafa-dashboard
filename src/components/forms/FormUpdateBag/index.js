@@ -37,7 +37,7 @@ export function FormUpdateBag({ id = null, ...props }) {
 
     const { data: dataGetBag, loading: loadingGetBag, error: errorGetBag } = useQuery(GET_BAG, objectQuery({ id }));
 
-    const [submit, { data, error }] = useMutation(UPDATE_BAG, objectMutation({
+    const [submit, { data, loading, error }] = useMutation(UPDATE_BAG, objectMutation({
         id,
         name,
         total,
@@ -293,6 +293,7 @@ export function FormUpdateBag({ id = null, ...props }) {
                                 <Line>
                                     <Button
                                         onClick={() => submit()}
+                                        loading={loading}
                                     >
                                         {TEXTS.BUTTON_SUBMIT}
                                     </Button>

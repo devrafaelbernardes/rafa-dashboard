@@ -27,7 +27,7 @@ export function FormUpdatePositionMedias({ children, ...props }) {
             orderBy: [{ column: MEDIA.POSITION, order: "asc" }],
         })
     ));
-    let [submit, { data, error }] = useMutation(UPDATE_POSITON_MEDIAS, objectMutation({
+    let [submit, { data, loading, error }] = useMutation(UPDATE_POSITON_MEDIAS, objectMutation({
         positions
     }));
 
@@ -128,6 +128,7 @@ export function FormUpdatePositionMedias({ children, ...props }) {
                     <Line>
                         <Button
                             type="submit"
+                            loading={loading}
                         >
                             {TEXTS.BUTTON_SUBMIT}
                         </Button>

@@ -23,7 +23,7 @@ export function FormAddSocialNetwork({ ...props }) {
     const { colors } = useContext(ThemeContext);
     const TEXTS = Texts.FORM_ADD_SOCIAL_NETWORK;
 
-    const [submit, { data, error }] = useMutation(CREATE_SOCIAL_NETWORK, objectMutation({ link }, { image }));
+    const [submit, { data, loading, error }] = useMutation(CREATE_SOCIAL_NETWORK, objectMutation({ link }, { image }));
 
     useEffect(() => {
         let MOUNTED = true;
@@ -137,6 +137,7 @@ export function FormAddSocialNetwork({ ...props }) {
                 <Line>
                     <Button
                         type={"submit"}
+                        loading={loading}
                     >
                         {TEXTS.BUTTON_SUBMIT}
                     </Button>

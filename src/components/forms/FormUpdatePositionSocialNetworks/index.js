@@ -27,7 +27,7 @@ export function FormUpdatePositionSocialNetworks({ children, ...props }) {
             orderBy: [{ column: SOCIAL_NETWORK.POSITION, order: "asc" }],
         })
     ));
-    let [submit, { data, error }] = useMutation(UPDATE_POSITON_SOCIAL_NETWORKS, objectMutation({
+    let [submit, { data, loading, error }] = useMutation(UPDATE_POSITON_SOCIAL_NETWORKS, objectMutation({
         positions
     }));
 
@@ -128,6 +128,7 @@ export function FormUpdatePositionSocialNetworks({ children, ...props }) {
                     <Line>
                         <Button
                             type="submit"
+                            loading={loading}
                         >
                             {TEXTS.BUTTON_SUBMIT}
                         </Button>

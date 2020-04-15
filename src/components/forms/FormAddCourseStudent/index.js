@@ -12,7 +12,7 @@ export function FormAddCourseStudent({ courseId, ...props }) {
     const [email, setEmail] = useState("");
     const [result, setResult] = useState("");
     const { colors } = useContext(ThemeContext);
-    const [addCourseStudent, { data, error }] = useMutation(ADD_COURSE_STUDENT, objectMutation({
+    const [addCourseStudent, { data, loading, error }] = useMutation(ADD_COURSE_STUDENT, objectMutation({
         courseId,
         studentEmail : email,
     }));
@@ -94,6 +94,7 @@ export function FormAddCourseStudent({ courseId, ...props }) {
                 <Line>
                     <Button
                         type="submit"
+                        loading={loading}
                     >
                         {TEXTS.BUTTON_SUBMIT}
                     </Button>

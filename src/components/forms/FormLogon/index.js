@@ -17,7 +17,7 @@ export function FormLogon({ children, ...props }) {
     const [result, setResult] = useState("");
     const { colors } = useContext(ThemeContext);
     const { doLogin } = useContext(ContextApp);
-    const [login, { data, error }] = useMutation(DO_LOGIN, objectMutation({
+    const [login, { data, loading, error }] = useMutation(DO_LOGIN, objectMutation({
         email,
         password
     }));
@@ -98,6 +98,7 @@ export function FormLogon({ children, ...props }) {
                 <Line>
                     <Button
                         type="submit"
+                        loading={loading}
                     >
                         {TEXTS.BUTTON_SUBMIT}
                     </Button>
