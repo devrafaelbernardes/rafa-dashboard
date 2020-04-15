@@ -40,11 +40,19 @@ export const UPDATE_BAG = gql`
         response : updateBag(input : $input, firstImage : $firstImage, secondImage : $secondImage){
             ${BAG.ID}
             ${BAG.NAME}
-            ${BAG.FIRST_IMAGE} {
+            ${BAG.DISCOUNT_PRICE}
+            ${BAG.TOTAL_PRICE}
+            ${BAG.INSTALLMENTS_PRICE}
+            ${BAG.INSTALLMENTS}
+            ${BAG.POSITION}
+            ${BAG.DEPOSIT}
+            ${BAG.LINK}
+            ${BAG.CREATED_AT}
+            ${BAG.FIRST_IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}
             }
-            ${BAG.SECOND_IMAGE} {
+            ${BAG.SECOND_IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}
             }
@@ -167,6 +175,7 @@ export const UPDATE_COURSE_VIDEO = gql`
             ${COURSE_VIDEO.NAME}
             ${COURSE_VIDEO.DESCRIPTION}
             ${COURSE_VIDEO.VIDEO}{
+                ${VIDEO.ID}
                 ${VIDEO.URL}
             }
         }
@@ -193,6 +202,8 @@ export const UPDATE_COURSE = gql`
             ${COURSE.NAME}
             ${COURSE.DESCRIPTION}
             ${COURSE.PURCHASE_LINK}
+            ${COURSE.COUNT_STUDENTS}
+            ${COURSE.COUNT_VIDEOS}
             ${COURSE.PROFILE_IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}

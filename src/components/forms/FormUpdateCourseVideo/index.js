@@ -25,50 +25,26 @@ export function FormUpdateCourseVideo({ courseId, videoId, ...props }) {
     const { colors } = useContext(ThemeContext);
     const TEXTS = Texts.FORM_UPDATE_COURSE_VIDEO;
 
-    const { data: dataGetVideo, error: errorGetVideo, loading: loadingGetVideo } = useQuery(GET_COURSE_VIDEO, objectQuery({ courseId, videoId }));
+    let { data: dataGetVideo, error: errorGetVideo, loading: loadingGetVideo } = useQuery(GET_COURSE_VIDEO, objectQuery({ courseId, videoId }));
 
-    const [submit, { data, error, loading }] = useMutation(UPDATE_COURSE_VIDEO, objectMutation({ courseId, videoId, name, description }));
+    const [submit, { loading }] = useMutation(UPDATE_COURSE_VIDEO);
 
     useEffect(() => {
         (async () => {
             if (dataGetVideo && dataGetVideo.response) {
                 const video = dataGetVideo.response;
-                setNotFound(false);
-                setName(video[COURSE_VIDEO.NAME]);
-                setVideo(video[COURSE_VIDEO.VIDEO] && video[COURSE_VIDEO.VIDEO][VIDEO.URL]);
+                await setNotFound(false);
+                await setName(video[COURSE_VIDEO.NAME]);
+                await setVideo(video[COURSE_VIDEO.VIDEO] && video[COURSE_VIDEO.VIDEO][VIDEO.URL]);
                 try {
                     const descriptionParse = await toHTML(video[COURSE_VIDEO.DESCRIPTION], false);
-                    setDescription(descriptionParse && descriptionParse[0]);
-                } catch (error) { }
+                    await setDescription(descriptionParse && descriptionParse[0]);
+                } catch (error) {}
                 return;
             }
             setNotFound(true);
         })()
     }, [dataGetVideo, errorGetVideo]);
-
-    useEffect(() => {
-        let MOUNTED = true;
-        (async () => {
-            if (error && MOUNTED) {
-                setResult(false);
-            } else if (data) {
-                if (data.response && MOUNTED) {
-                    setResult(true);
-                    const video = data.response;
-                    setName(video[COURSE_VIDEO.NAME]);
-                    try {
-                        const descriptionParse = await toHTML(video[COURSE_VIDEO.DESCRIPTION], false);
-                        setDescription(descriptionParse && descriptionParse[0]);
-                    } catch (error) { }
-                } else {
-                    setResult(false);
-                }
-            }
-        })()
-        return () => {
-            MOUNTED = false;
-        }
-    }, [data, error]);
 
     useEffect(() => {
         if (result !== "") {
@@ -86,6 +62,26 @@ export function FormUpdateCourseVideo({ courseId, videoId, ...props }) {
         }
     }, [result]);
 
+    const update = async() => {
+        let OKEY = false;
+        try {
+            await submit(objectMutation({ courseId, videoId, name, description }))
+                .then(async(response) => {
+                    if(response && response.data && response.data.response){
+                        OKEY = true;
+                        const video = response.data.response;
+                        setName(video[COURSE_VIDEO.NAME]);
+                        try {
+                            const descriptionParse = await toHTML(video[COURSE_VIDEO.DESCRIPTION], false);
+                            setDescription(descriptionParse && descriptionParse[0]);
+                        } catch (error) { }
+                    }
+                })
+                .catch(e => {})
+        } catch (error) {}
+        setResult(OKEY);
+    }
+    
     return (
         <Container {...props}>
             <ComponentLoading loading={loadingGetVideo}>
@@ -96,7 +92,7 @@ export function FormUpdateCourseVideo({ courseId, videoId, ...props }) {
                         </NotFoundContainer>
                     ) : (
                             <Form
-                                onSubmit={() => submit()}
+                                onSubmit={() => update()}
                             >
                                 {
                                     video &&
