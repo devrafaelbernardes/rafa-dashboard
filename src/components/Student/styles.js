@@ -13,6 +13,7 @@ export const Header = styled(Row)`
 export const Title = styled(Row)`
     justify-content: center;
     align-items: center;
+    text-align: center;
     font-weight: bold;
     font-family: ${({ theme }) => theme.fonts.normal};
     font-size: ${({ theme }) => theme.sizes.fonts.normal};
@@ -21,6 +22,7 @@ export const Title = styled(Row)`
 export const Subtitle = styled(Row)`
     justify-content: center;
     align-items: center;
+    text-align: center;
     font-family: ${({ theme }) => theme.fonts.small};
     font-size: ${({ theme }) => theme.sizes.fonts.normal};
 `;
