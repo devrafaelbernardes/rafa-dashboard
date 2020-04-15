@@ -146,7 +146,7 @@ export function FormUpdateCourse({ courseId, ...props }) {
                             data={description}
                             label={TEXTS.DESCRIPTION}
                             placeholder={TEXTS.DESCRIPTION}
-                            onChange={(e, editor) => setDescription(String(editor.getData()))}
+                            onChange={(e, editor) => setDescription(String(editor.getData() || ""))}
                         />
                     </Line>
                     {
