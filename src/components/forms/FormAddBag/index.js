@@ -32,7 +32,7 @@ export function FormAddBag({ ...props }) {
     const { colors } = useContext(ThemeContext);
     const TEXTS = Texts.FORM_ADD_BAG;
 
-    const [submit, { data, error }] = useMutation(CREATE_BAG, objectMutation({
+    const [submit, { data, loading, error }] = useMutation(CREATE_BAG, objectMutation({
         name,
         total,
         discount,
@@ -234,6 +234,7 @@ export function FormAddBag({ ...props }) {
                 <Line>
                     <Button
                         type={"submit"}
+                        loading={loading}
                     >
                         {TEXTS.BUTTON_SUBMIT}
                     </Button>

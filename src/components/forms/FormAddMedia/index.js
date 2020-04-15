@@ -23,7 +23,7 @@ export function FormAddMedia({ ...props }) {
     const { colors } = useContext(ThemeContext);
     const TEXTS = Texts.FORM_ADD_MEDIA;
 
-    const [submit, { data, error }] = useMutation(CREATE_MEDIA, objectMutation({ link }, { image }));
+    const [submit, { data, loading, error }] = useMutation(CREATE_MEDIA, objectMutation({ link }, { image }));
 
     useEffect(() => {
         let MOUNTED = true;
@@ -115,7 +115,6 @@ export function FormAddMedia({ ...props }) {
                 </Line>
                 <Line>
                     <Input
-                        required
                         name={"link"}
                         value={link}
                         label={TEXTS.LINK}
@@ -138,6 +137,7 @@ export function FormAddMedia({ ...props }) {
                 <Line>
                     <Button
                         type={"submit"}
+                        loading={loading}
                     >
                         {TEXTS.BUTTON_SUBMIT}
                     </Button>

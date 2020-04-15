@@ -27,7 +27,7 @@ export function FormUpdatePositionBags({ children, ...props }) {
             orderBy: [{ column: BAG.POSITION, order: "asc" }],
         })
     ));
-    let [submit, { data, error }] = useMutation(UPDATE_POSITON_BAGS, objectMutation({
+    let [submit, { data, error, loading }] = useMutation(UPDATE_POSITON_BAGS, objectMutation({
         positions
     }));
 
@@ -128,6 +128,7 @@ export function FormUpdatePositionBags({ children, ...props }) {
                     <Line>
                         <Button
                             type="submit"
+                            loading={loading}
                         >
                             {TEXTS.BUTTON_SUBMIT}
                         </Button>

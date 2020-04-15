@@ -13,7 +13,7 @@ export function FormUpdatePassword({ children, ...props }) {
     const [newPassword, setNewPassword] = useState("");
     const [result, setResult] = useState("");
     const { colors } = useContext(ThemeContext);
-    const [updatePassword, { data, error }] = useMutation(UPDATE_PASSWORD, objectMutation({
+    const [updatePassword, { data, loading, error }] = useMutation(UPDATE_PASSWORD, objectMutation({
         password,
         newPassword
     }));
@@ -98,6 +98,7 @@ export function FormUpdatePassword({ children, ...props }) {
                 <Line>
                     <Button
                         type="submit"
+                        loading={loading}
                     >
                         {TEXTS.BUTTON_SUBMIT}
                     </Button>
