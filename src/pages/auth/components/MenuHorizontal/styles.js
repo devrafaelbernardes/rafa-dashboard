@@ -24,6 +24,16 @@ export const Link = styled(LinkDefault).attrs({activeClassName})`
     @media screen and (max-width : ${({ theme }) => theme.sizes.sm}){
         width: 100%;
         margin:0;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
+        border-bottom: 0;
+        border-left: 2px solid transparent;
+        padding: 10px 15px;
+        line-height: 1;
+
+        &${activeClassNameString}, &:hover{
+            border-color: transparent;
+            background: ${({ theme }) => theme.colors.secondary};
+            border-radius: ${({ theme }) => theme.sizes.border_radius};
+        }
     }
 `;

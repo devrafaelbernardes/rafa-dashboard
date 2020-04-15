@@ -1,15 +1,12 @@
 import React, { useState, memo } from 'react';
 
-import NoImage from 'assets/images/no-image.png';
-
 import {
     Container,
     Body,
     Header,
-    HeaderTitle,
-    HeaderImage,
-    HeaderInfo,
-    HeaderDate,
+    BodyTitle,
+    BodyInfo,
+    BodyDate,
     ButtonRemove,
 } from './styles';
 
@@ -17,8 +14,9 @@ import { toDate } from 'utils/convertValue';
 import Texts from 'config/Texts';
 import { RemoveIcon } from 'components/Icons';
 import RemoveContainer from 'components/RemoveContainer';
+import Student from 'components/Student';
 
-export const Item = memo(({ id, title, image, date, onRemove, ...props }) => {
+export const Item = memo(({ id, title, subtitle, image, date, onRemove, ...props }) => {
     const [tryRemove, setTryRemove] = useState(false);
 
     const TEXTS = Texts.PAGE_AUTH_COURSE.STUDENTS;
@@ -28,19 +26,21 @@ export const Item = memo(({ id, title, image, date, onRemove, ...props }) => {
             {...props}
         >
             <Header>
-                <HeaderImage
-                    src={image || NoImage}
+                <Student
+                    title={title}
+                    subtitle={subtitle}
+                    image={image}
                 />
-                <HeaderInfo>
-                    <HeaderTitle>
-                        {title}
-                    </HeaderTitle>
-                    <HeaderDate>
-                        {toDate(date)}
-                    </HeaderDate>
-                </HeaderInfo>
             </Header>
             <Body>
+                <BodyInfo>
+                    <BodyTitle>
+                        {TEXTS.ADDED}
+                    </BodyTitle>
+                    <BodyDate>
+                        {toDate(date)}
+                    </BodyDate>
+                </BodyInfo>
                 <RemoveContainer
                     tryRemove={tryRemove}
                     onCancel={() => setTryRemove(false)}

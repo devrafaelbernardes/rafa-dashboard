@@ -101,6 +101,7 @@ export const TextPortuguese = {
         STUDENTS: {
             TITLE: 'Quantidade de alunos:',
             ADD_STUDENT: 'Adicionar aluno',
+            ADDED: 'Adicionado no dia:',
             LOAD_MORE: 'Ver mais',
             BUTTON_REMOVE_CANCEL: 'Cancelar',
             BUTTON_REMOVE_CONFIRM: 'Confirmar remoção',

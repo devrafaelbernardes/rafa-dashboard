@@ -186,6 +186,7 @@ export const GET_COURSE_STUDENTS = gql`
                     ${COURSE_STUDENT.STUDENT}{
                         ${STUDENT.ID}
                         ${STUDENT.FULL_NAME}
+                        ${STUDENT.EMAIL}
                         ${STUDENT.PROFILE_IMAGE} {
                             ${IMAGE.ID}
                             ${IMAGE.URL}
