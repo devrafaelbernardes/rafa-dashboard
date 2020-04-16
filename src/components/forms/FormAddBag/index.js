@@ -121,7 +121,7 @@ export function FormAddBag({ ...props }) {
                         installmentsPrice={installmentsPrice}
                         installments={installments}
                         deposit={deposit}
-                        link={link}
+                        href={link}
                         firstImage={firstImagePreview}
                         secondImage={secondImagePreview}
                     />
