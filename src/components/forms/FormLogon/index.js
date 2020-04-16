@@ -7,7 +7,6 @@ import Form from 'components/forms/Form';
 import Input from 'components/Input';
 import InputPassword from 'components/InputPassword';
 import Texts from 'config/Texts';
-import { ADMIN_ACCESS, TOKEN_ACCESS } from 'services/api/responseAPI';
 import objectMutation, { DO_LOGIN } from 'services/api/mutation';
 import ContextApp from 'context/ContextApp';
 
@@ -32,7 +31,7 @@ export function FormLogon({ children, ...props }) {
             } else if (data) {
                 if (data.response && MOUNTED) {
                     setResult(true);
-                    const token = data.response[ADMIN_ACCESS.TOKEN] && data.response[ADMIN_ACCESS.TOKEN][TOKEN_ACCESS.TOKEN];
+                    const token = data.response;
                     if (doLogin) {
                         await doLogin(token);
                     }

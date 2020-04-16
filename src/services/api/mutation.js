@@ -1,13 +1,9 @@
 import gql from 'graphql-tag';
-import { ADMIN_ACCESS, TOKEN_ACCESS, BAG, IMAGE, MEDIA, SOCIAL_NETWORK, COURSE, COURSE_STUDENT, COURSE_ACCESS, STUDENT, COURSE_VIDEO, VIDEO, ADMIN } from './responseAPI';
+import { BAG, IMAGE, MEDIA, SOCIAL_NETWORK, COURSE, COURSE_STUDENT, COURSE_ACCESS, STUDENT, COURSE_VIDEO, VIDEO, ADMIN } from './responseAPI';
 
 export const DO_LOGIN = gql`
     mutation MutationLoginAdmin($input : InputLoginAdmin){
-        response : loginAdmin(input : $input){
-            ${ADMIN_ACCESS.TOKEN}{
-                ${TOKEN_ACCESS.TOKEN}
-            }
-        }
+        response : loginAdmin(input : $input)
     }
 `;
 
@@ -257,9 +253,7 @@ export const GENERATE_COURSE_ACCESS = gql`
             ${COURSE_ACCESS.ID}
             ${COURSE_ACCESS.CURRENTY_STATE}
             ${COURSE_ACCESS.CREATED_AT}
-            ${COURSE_ACCESS.TOKEN}{
-                ${TOKEN_ACCESS.TOKEN}
-            }
+            ${COURSE_ACCESS.TOKEN}
             ${COURSE_ACCESS.STUDENT}{
                 ${STUDENT.FULL_NAME}
                 ${STUDENT.PROFILE_IMAGE}{

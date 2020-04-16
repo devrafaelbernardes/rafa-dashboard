@@ -18,7 +18,7 @@ import Texts from 'config/Texts';
 import ContextCourse from 'context/ContextCourse';
 
 import objectQuery, { GET_COURSE_ACCESSES } from 'services/api/query';
-import { PAGINATION, COURSE_ACCESS, TOKEN_ACCESS, PAGE_INFO } from 'services/api/responseAPI';
+import { PAGINATION, COURSE_ACCESS, PAGE_INFO } from 'services/api/responseAPI';
 import { objectPagination } from 'services/api/config';
 
 import { PlusIcon } from 'components/Icons';
@@ -134,7 +134,7 @@ export function Home() {
                         items={accesses}
                         renderItem={(item, key) => {
                             const accessId = item[COURSE_ACCESS.ID];
-                            const token = item[COURSE_ACCESS.TOKEN] && item[COURSE_ACCESS.TOKEN][TOKEN_ACCESS.TOKEN];
+                            const token = item[COURSE_ACCESS.TOKEN];
                             const state = item[COURSE_ACCESS.CURRENTY_STATE];
                             const createdAt = item[COURSE_ACCESS.CREATED_AT];
                             const student = item[COURSE_ACCESS.STUDENT];
