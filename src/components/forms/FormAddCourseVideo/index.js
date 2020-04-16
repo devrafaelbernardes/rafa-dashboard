@@ -22,28 +22,7 @@ export function FormAddCourseVideo({ courseId, ...props }) {
     const [result, setResult] = useState("");
     const { colors } = useContext(ThemeContext);
     const TEXTS = Texts.FORM_ADD_COURSE_VIDEO;    
-    const [submit, { data, error, loading }] = useMutation(CREATE_COURSE_VIDEO, objectMutation({ courseId, name, description }, { video }));
-
-    useEffect(() => {
-        let MOUNTED = true;
-        (async () => {
-            if (error && MOUNTED) {
-                setResult(false);
-            } else if (data) {
-                if (data.response && MOUNTED) {
-                    const courseVideo = data.response;
-                    setName(courseVideo[COURSE_VIDEO.NAME]);
-                    setVideoPreview(courseVideo[COURSE_VIDEO.VIDEO] && courseVideo[COURSE_VIDEO.VIDEO][VIDEO.URL]);
-                    setResult(true);
-                } else {
-                    setResult(false);
-                }
-            }
-        })()
-        return () => {
-            MOUNTED = false;
-        }
-    }, [data, error]);
+    const [submit, { loading }] = useMutation(CREATE_COURSE_VIDEO);
 
     useEffect(() => {
         if (result !== "" && result === false) {
@@ -85,10 +64,28 @@ export function FormAddCourseVideo({ courseId, ...props }) {
         setResult("");
     }
 
+    const upload = async() => {
+        let OKEY = false;
+        try {
+            await submit(objectMutation({ courseId, name, description }, { video }))
+                .then(response => {
+                    if (response && response.data && response.data.response) {
+                        const courseVideo = response.data.response;
+                        setName(courseVideo[COURSE_VIDEO.NAME]);
+                        setVideoPreview(courseVideo[COURSE_VIDEO.VIDEO] && courseVideo[COURSE_VIDEO.VIDEO][VIDEO.URL]);
+                        OKEY = true;
+                    }
+                })
+                .catch(e => {});
+        } catch (error) {}
+
+        setResult(OKEY);
+    }
+
     return (
         <Container {...props}>
             <Form
-                onSubmit={() => submit()}
+                onSubmit={() => upload()}
             >
                 <CourseVideoPreviewContainer>
                     <CourseVideoPreview>
