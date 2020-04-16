@@ -182,7 +182,7 @@ export function FormUpdateBag({ id = null, ...props }) {
                                         installmentsPrice={installmentsPrice}
                                         installments={installments}
                                         deposit={deposit}
-                                        link={link}
+                                        href={link}
                                         firstImage={firstImagePreview}
                                         secondImage={secondImagePreview}
                                     />

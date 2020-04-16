@@ -25,7 +25,7 @@ import { ThemeContext } from 'styled-components';
 
 const TEXTS = Texts.BAG;
 
-function Bag({ id, firstImage, secondImage, title, total, deposit, discount, installmentsPrice, installments, link, right, ...props }) {
+function Bag({ id, firstImage, secondImage, title, total, deposit, discount, installmentsPrice, installments, href, right, ...props }) {
     var [totalDecimal, setTotalDecimal] = useState(null);
     var [discountDecimal, setDiscountDecimal] = useState(null);
     var [priceInstallmentsDecimal, setPriceInstallmentsDecimal] = useState(null);
@@ -111,7 +111,7 @@ function Bag({ id, firstImage, secondImage, title, total, deposit, discount, ins
                     {
                         firstImage &&
                         <FirstImageContainer>
-                            <Box link={link}>
+                            <Box href={href}>
                                 <FirstImage
                                     fluid
                                     src={firstImage}
@@ -125,7 +125,7 @@ function Bag({ id, firstImage, secondImage, title, total, deposit, discount, ins
             {
                 secondImage &&
                 <SecondImageContainer xs="12" sm="12" md="7" lg="7" style={right ? { paddingLeft: 0 } : { paddingRight: 0 }}>
-                    <Box link={link}>
+                    <Box href={href}>
                         <SecondImage
                             fluid
                             src={secondImage}
@@ -138,16 +138,15 @@ function Bag({ id, firstImage, secondImage, title, total, deposit, discount, ins
     );
 }
 
-const Box = memo(({ children, link }) => {
+const Box = memo(({ children, href }) => {
     var [open, setOpen] = useState(false);
     return (
         <BoxLinkContainer onMouseOver={() => setOpen(true)}>
             {
-                link &&
+                href &&
                 <span onMouseOut={() => setOpen(false)}>
                     <Link
-                        isLink
-                        link={link}
+                        href={href}
                         style={{ display: !open ? 'none' : 'flex' }}
                     >
                         <BoxLinkInfo>
