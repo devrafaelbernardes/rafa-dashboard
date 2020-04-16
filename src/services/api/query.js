@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { ADMIN, IMAGE, BAG, PAGINATION, MEDIA, SOCIAL_NETWORK, PAGE_INFO, COURSE, COURSE_STUDENT, STUDENT, COURSE_ACCESS, TOKEN_ACCESS, COURSE_VIDEO, VIDEO } from './responseAPI';
+import { ADMIN, IMAGE, BAG, PAGINATION, MEDIA, SOCIAL_NETWORK, PAGE_INFO, COURSE, COURSE_STUDENT, STUDENT, COURSE_ACCESS, COURSE_VIDEO, VIDEO } from './responseAPI';
 
 export const GET_CURRENTY_USER = gql`{   
     response : me_admin{
@@ -138,9 +138,7 @@ export const GET_COURSE_ACCESSES = gql`
                 ${COURSE_ACCESS.ID}
                 ${COURSE_ACCESS.CURRENTY_STATE}
                 ${COURSE_ACCESS.CREATED_AT}
-                ${COURSE_ACCESS.TOKEN}{
-                    ${TOKEN_ACCESS.TOKEN}
-                }
+                ${COURSE_ACCESS.TOKEN}
                 ${COURSE_ACCESS.STUDENT}{
                     ${STUDENT.FULL_NAME}
                     ${STUDENT.PROFILE_IMAGE}{
