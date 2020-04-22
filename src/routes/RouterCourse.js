@@ -9,6 +9,7 @@ import ErrorURL from 'routes/URLs/ErrorURL';
 // PAGES AUTH
 import CreateAccess from 'pages/auth/Course/pages/CreateAccess';
 import Home from 'pages/auth/Course/pages/Home';
+import Materials from 'pages/auth/Course/pages/Materials';
 import Settings from 'pages/auth/Course/pages/Settings';
 import Students from 'pages/auth/Course/pages/Students';
 import Videos from 'pages/auth/Course/pages/Videos';
@@ -40,6 +41,11 @@ export function RouterCourse() {
             <ProtectedRoute
                 path={ROUTER.STUDENTS.BASE}
                 componentAuthenticated={Students}
+                redirectNotAuthenticatedURL={DESCONNECTED_LINK}
+            />
+            <ProtectedRoute
+                path={ROUTER.MATERIALS.BASE}
+                componentAuthenticated={Materials}
                 redirectNotAuthenticatedURL={DESCONNECTED_LINK}
             />
             <ProtectedRoute

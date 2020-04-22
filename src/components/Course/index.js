@@ -1,5 +1,7 @@
 import React from 'react';
 
+import NoImageSRC from 'assets/images/no-thumbnail.png';
+
 import { Container, Image, Title, Header, Body/* , Description */ } from './styles';
 
 export function Course({ image = null, title = null, description = null, link = "", componentHeader, componentBody, ...props }) {
@@ -11,6 +13,7 @@ export function Course({ image = null, title = null, description = null, link = 
                 <Image
                     fluid
                     src={image}
+                    srcNoImage={NoImageSRC}
                 />
             </Header>
             <Body as={componentBody}>

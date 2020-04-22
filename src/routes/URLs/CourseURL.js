@@ -8,9 +8,15 @@ export const CourseURL = (id = "") => {
         BASE : `${base}`,
         ADD : `${base}add/`,
         EDIT : (videoId = null) => `${base}edit/${videoId || ":videoId"}`,
+        VIEW : (videoId = null) => `${base}view/${videoId || ":videoId"}`,
     });
 
     const students = (base) => ({
+        BASE : `${base}`,
+        ADD : `${base}add/`,
+    });
+
+    const materials = (base) => ({
         BASE : `${base}`,
         ADD : `${base}add/`,
     });
@@ -27,6 +33,7 @@ export const CourseURL = (id = "") => {
             CREATE_ACCESS: createAccess(formatURL(`${base}createAccess/`)),
             VIDEOS: videos(formatURL(`${base}videos/`)),
             STUDENTS: students(formatURL(`${base}students/`)),
+            MATERIALS: materials(formatURL(`${base}materials/`)),
             SETTINGS: formatURL(`${base}settings/`),
         })
     };

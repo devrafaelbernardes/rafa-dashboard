@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Row } from 'react-bootstrap';
-import { ButtonClean, ButtonContained } from 'components/Button';
+import { ButtonClean as ButtonCleanDefault, ButtonContained } from 'components/Button';
 import Video from 'components/Video';
 
 export const Container = styled(Row)`
@@ -25,7 +25,7 @@ export const Line = styled(Row)`
     padding: 0;
 `;
 
-export const ButtonRemove = styled(ButtonClean)`
+export const ButtonClean = styled(ButtonCleanDefault)`
     padding: 0 !important;
     margin-top: 10px;
     & > *{

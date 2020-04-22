@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Row } from 'react-bootstrap';
 import VideoPlayer from 'components/VideoPlayer';
+import Image from 'components/Image';
 
 export const Container = styled(Row)`
     padding: 0;
@@ -10,6 +11,8 @@ export const Container = styled(Row)`
 export const Header = styled(Row)`
     padding: 0;
 `;
+
+export const Thumbnail = styled(Image)``;
 
 export const Player = styled(VideoPlayer)`
     width: 100%;

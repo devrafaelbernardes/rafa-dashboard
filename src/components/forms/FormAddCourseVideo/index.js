@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ThemeContext } from 'styled-components';
 
-import { Container, Line, Button, BoxResult, CancelButton, CourseVideoPreview, CourseVideoPreviewContainer, ContainerButtonResult, ContainerResult, ContainerInputFile } from './styles';
+import { Container, Line, Button, BoxResult, CourseVideoPreviewCard, Title, CourseVideoPreviewGeneral, CourseThumbnailPreview, CancelButton, CourseVideoPreview, CourseVideoPreviewContainer, ContainerButtonResult, ContainerResult, ContainerInputFile } from './styles';
 
 import Form from 'components/forms/Form';
 import Video from 'components/Video';
@@ -19,9 +19,11 @@ export function FormAddCourseVideo({ courseId, ...props }) {
     const [description, setDescription] = useState("");
     const [video, setVideo] = useState(null);
     const [videoPreview, setVideoPreview] = useState(null);
+    const [thumbnail, setThumbnail] = useState(null);
+    const [thumbnailPreview, setThumbnailPreview] = useState(null);
     const [result, setResult] = useState("");
     const { colors } = useContext(ThemeContext);
-    const TEXTS = Texts.FORM_ADD_COURSE_VIDEO;    
+    const TEXTS = Texts.FORM_ADD_COURSE_VIDEO;
     const [submit, { loading }] = useMutation(CREATE_COURSE_VIDEO);
 
     useEffect(() => {
@@ -50,6 +52,16 @@ export function FormAddCourseVideo({ courseId, ...props }) {
         }
     }, [video]);
 
+    useEffect(() => {
+        if (thumbnail) {
+            try {
+                setThumbnailPreview(URL.createObjectURL(thumbnail));
+            } catch (error) { }
+        } else {
+            setThumbnailPreview(null);
+        }
+    }, [thumbnail]);
+
     const getFile = (e) => {
         if (e.target.files && e.target.files.length > 0) {
             return e.target.files[0];
@@ -61,13 +73,15 @@ export function FormAddCourseVideo({ courseId, ...props }) {
         setDescription("");
         setVideo(null);
         setVideoPreview(null);
+        setThumbnail(null);
+        setThumbnailPreview(null);
         setResult("");
     }
 
-    const upload = async() => {
+    const upload = async () => {
         let OKEY = false;
         try {
-            await submit(objectMutation({ courseId, name, description }, { video }))
+            await submit(objectMutation({ courseId, name, description }, { video, thumbnail }))
                 .then(response => {
                     if (response && response.data && response.data.response) {
                         const courseVideo = response.data.response;
@@ -76,8 +90,8 @@ export function FormAddCourseVideo({ courseId, ...props }) {
                         OKEY = true;
                     }
                 })
-                .catch(e => {});
-        } catch (error) {}
+                .catch(e => { });
+        } catch (error) { }
 
         setResult(OKEY);
     }
@@ -88,43 +102,74 @@ export function FormAddCourseVideo({ courseId, ...props }) {
                 onSubmit={() => upload()}
             >
                 <CourseVideoPreviewContainer>
-                    <CourseVideoPreview>
-                        <Video
-                            controls
-                            title={name}
-                            url={videoPreview}
-                        />
+                    <CourseVideoPreviewGeneral>
                         {
-                            (result === true) &&
-                            <ContainerResult>
-                                <BoxResult color={colors.success}>
-                                    {TEXTS.SUCCESS_UPDATE}
-                                </BoxResult>
-                                <ContainerButtonResult>
-                                    <CancelButton
-                                        onClick={() => resetParams()}
-                                    >
-                                        {TEXTS.BUTTON_BACK}
-                                    </CancelButton>
-                                </ContainerButtonResult>
-                            </ContainerResult>
+                            (result !== true) &&
+                            <CourseVideoPreview>
+                                <CourseVideoPreviewCard>
+                                    <Title>{TEXTS.VIDEO}</Title>
+                                    <Video
+                                        controls
+                                        title={name}
+                                        url={videoPreview}
+                                    />
+                                    <ContainerInputFile>
+                                        <InputFile
+                                            id="formAddCourse1"
+                                            name={"video"}
+                                            onChange={(e) => setVideo(getFile(e))}
+                                        >
+                                            {TEXTS.BUTTON_VIDEO}
+                                        </InputFile>
+                                    </ContainerInputFile>
+                                </CourseVideoPreviewCard>
+                            </CourseVideoPreview>
                         }
-                    </CourseVideoPreview>
+                        <CourseThumbnailPreview>
+                            <CourseVideoPreviewCard>
+                                {
+                                    (result !== true) &&
+                                    <Title>{TEXTS.THUMBNAIL}</Title>
+                                }
+                                <Video
+                                    controls
+                                    title={name}
+                                    thumbnail={thumbnailPreview}
+                                />
+                                {
+                                    (result !== true) &&
+                                    <ContainerInputFile>
+                                        <InputFile
+                                            id="formAddCourse2"
+                                            name={"thumbnail"}
+                                            onChange={(e) => setThumbnail(getFile(e))}
+                                        >
+                                            {TEXTS.BUTTON_THUMBNAIL}
+                                        </InputFile>
+                                    </ContainerInputFile>
+                                }
+                                {
+                                    (result === true) &&
+                                    <ContainerResult>
+                                        <BoxResult color={colors.success}>
+                                            {TEXTS.SUCCESS}
+                                        </BoxResult>
+                                        <ContainerButtonResult>
+                                            <CancelButton
+                                                onClick={() => resetParams()}
+                                            >
+                                                {TEXTS.BUTTON_BACK}
+                                            </CancelButton>
+                                        </ContainerButtonResult>
+                                    </ContainerResult>
+                                }
+                            </CourseVideoPreviewCard>
+                        </CourseThumbnailPreview>
+                    </CourseVideoPreviewGeneral>
                 </CourseVideoPreviewContainer>
                 {
                     (result !== true) &&
                     <>
-                        <Line>
-                            <ContainerInputFile>
-                                <InputFile
-                                    id="formAddCourse1"
-                                    name={"video"}
-                                    onChange={(e) => setVideo(getFile(e))}
-                                >
-                                    {TEXTS.BUTTON_VIDEO}
-                                </InputFile>
-                            </ContainerInputFile>
-                        </Line>
                         <Line>
                             <Input
                                 required
@@ -146,7 +191,7 @@ export function FormAddCourseVideo({ courseId, ...props }) {
                         {
                             (result === false) &&
                             <BoxResult color={colors.error}>
-                                {TEXTS.ERROR_UPDATE}
+                                {TEXTS.ERROR}
                             </BoxResult>
                         }
                         <Line>

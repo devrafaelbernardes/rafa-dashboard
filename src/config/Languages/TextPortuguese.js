@@ -96,7 +96,13 @@ export const TextPortuguese = {
             BUTTON_REMOVE_CANCEL: 'Cancelar',
             BUTTON_REMOVE_CONFIRM: 'Confirmar remoção',
             BUTTON_REMOVE: 'Remover',
+            BUTTON_EDIT: 'Editar',
             BUTTON_VIEW: 'Ver detalhes',
+
+            VIEW : {
+                BUTTON_EDIT: 'Editar',
+                NOT_FOUND : 'Desculpe, não encontrei o que você queria.',
+            }
         },
         STUDENTS: {
             TITLE: 'Quantidade de alunos:',
@@ -106,6 +112,16 @@ export const TextPortuguese = {
             BUTTON_REMOVE_CANCEL: 'Cancelar',
             BUTTON_REMOVE_CONFIRM: 'Confirmar remoção',
             BUTTON_REMOVE: 'Remover',
+        },
+        MATERIALS: {
+            ADDED: 'Adicionado no dia:',
+            TITLE: 'Quantidade de materiais:',
+            ADD_MATERIAL: 'Adicionar material',
+            LOAD_MORE: 'Ver mais',
+            BUTTON_REMOVE_CANCEL: 'Cancelar',
+            BUTTON_REMOVE_CONFIRM: 'Confirmar remoção',
+            BUTTON_REMOVE: 'Remover',
+            BUTTON_VIEW: 'Ver material',
         },
         CREATE_ACCESS: {
             TITLE: 'Quantidade de códigos de acesso:',
@@ -125,6 +141,7 @@ export const TextPortuguese = {
         },
         MENU: {
             BUTTON_HOME: 'Início',
+            BUTTON_MATERIALS: 'Materiais',
             BUTTON_VIDEOS: 'Videos',
             BUTTON_STUDENTS: 'Alunos',
             BUTTON_CREATE_ACCESS: 'Gerar acesso',
@@ -240,6 +257,15 @@ export const TextPortuguese = {
         SUCCESS: 'Adicionado com sucesso.',
         ERROR: 'Erro ao adicionar o aluno, verifique seus dados.',
     },
+    FORM_ADD_COURSE_MATERIAL: {
+        TITLE: 'Adicione um novo material',
+        NAME: 'Nome do material',
+        BUTTON_MATERIAL: 'Escolher material',
+        BUTTON_BACK: 'Voltar',
+        BUTTON_SUBMIT: 'Adicionar',
+        SUCCESS: 'Adicionado com sucesso.',
+        ERROR: 'Erro ao adicionar o material, verifique os dados e se o arquivo é PDF.',
+    },
     FORM_UPDATE_POSITION_BAGS: {
         BUTTON_SUBMIT: 'Salvar',
         SUCCESS_UPDATE: 'Atualizado com sucesso.',
@@ -310,13 +336,16 @@ export const TextPortuguese = {
         ERROR_UPDATE: 'Erro ao adicionar, por favor tente novamente mais tarde.',
     },
     FORM_ADD_COURSE_VIDEO: {
+        VIDEO: 'Vídeo',
+        THUMBNAIL: 'Miniatura',
         NAME: 'Título do video',
         DESCRIPTION: 'Descrição',
         BUTTON_VIDEO: 'Escolha o video',
+        BUTTON_THUMBNAIL: 'Mudar miniatura',
         BUTTON_SUBMIT: 'Adicionar',
         BUTTON_BACK: 'Voltar',
-        SUCCESS_UPDATE: 'Adicionado com sucesso.',
-        ERROR_UPDATE: 'Erro ao adicionar, por favor tente novamente mais tarde.',
+        SUCCESS: 'Adicionado com sucesso.',
+        ERROR: 'Erro ao adicionar, por favor tente novamente mais tarde.',
     },
     FORM_UPDATE_COURSE: {
         NAME: 'Nome do curso',
@@ -338,10 +367,13 @@ export const TextPortuguese = {
         ERROR_UPDATE: 'Erro ao atualizar, por favor tente novamente mais tarde.',
     },
     FORM_UPDATE_COURSE_VIDEO: {
+        VIDEO: 'Vídeo',
+        THUMBNAIL: 'Miniatura',
         NAME: 'Título do video',
         NOT_FOUND_TITLE: 'Desculpe, não encontrei o que você queria.',
         DESCRIPTION: 'Descrição',
         BUTTON_SUBMIT: 'Salvar',
+        BUTTON_THUMBNAIL: 'Mudar miniatura',
         SUCCESS_UPDATE: 'Atualizado com sucesso.',
         ERROR_UPDATE: 'Erro ao atualizar, por favor tente novamente mais tarde.',
     },

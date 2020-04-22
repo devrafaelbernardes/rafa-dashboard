@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { BAG, IMAGE, MEDIA, SOCIAL_NETWORK, COURSE, COURSE_STUDENT, COURSE_ACCESS, STUDENT, COURSE_VIDEO, VIDEO, ADMIN } from './responseAPI';
+import { BAG, IMAGE, MEDIA, SOCIAL_NETWORK, COURSE, COURSE_STUDENT, COURSE_ACCESS, STUDENT, COURSE_VIDEO, VIDEO, ADMIN, COURSE_MATERIAL, MATERIAL } from './responseAPI';
 
 export const DO_LOGIN = gql`
     mutation MutationLoginAdmin($input : InputLoginAdmin){
@@ -152,8 +152,8 @@ export const CREATE_COURSE = gql`
 `;
 
 export const CREATE_COURSE_VIDEO = gql`
-    mutation MutationAddCourseVideo($input : InputAddCourseVideo, $video : Upload){
-        response : addCourseVideo(input : $input, video : $video){
+    mutation MutationAddCourseVideo($input : InputAddCourseVideo, $video : Upload, $thumbnail : Upload){
+        response : addCourseVideo(input : $input, video : $video, thumbnail : $thumbnail){
             ${COURSE_VIDEO.ID}
             ${COURSE_VIDEO.NAME}
             ${COURSE_VIDEO.VIDEO}{
@@ -164,9 +164,23 @@ export const CREATE_COURSE_VIDEO = gql`
     }
 `;
 
+export const CREATE_COURSE_MATERIAL = gql`
+    mutation MutationAddCourseMaterial($input : InputAddCourseMaterial, $material : Upload){
+        response : addCourseMaterial(input : $input, material : $material){
+            ${COURSE_MATERIAL.ID}
+            ${COURSE_MATERIAL.NAME}
+            ${COURSE_MATERIAL.CREATED_AT}
+            ${COURSE_MATERIAL.MATERIAL}{
+                ${MATERIAL.ID}
+                ${MATERIAL.URL}
+            }
+        }
+    }
+`;
+
 export const UPDATE_COURSE_VIDEO = gql`
-    mutation MutationUpdateCourseVideo($input : InputUpdateCourseVideo){
-        response : updateCourseVideo(input : $input){
+    mutation MutationUpdateCourseVideo($input : InputUpdateCourseVideo, $thumbnail : Upload){
+        response : updateCourseVideo(input : $input, thumbnail : $thumbnail){
             ${COURSE_VIDEO.ID}
             ${COURSE_VIDEO.NAME}
             ${COURSE_VIDEO.DESCRIPTION}
@@ -235,6 +249,14 @@ export const REMOVE_COURSE_VIDEO = gql`
     mutation MutationRemoveCourseVideo($input : InputRemoveCourseVideo){
         response : removeCourseVideo(input : $input){
             ${COURSE_VIDEO.ID}
+        }
+    }
+`;
+
+export const REMOVE_COURSE_MATERIAL = gql`
+    mutation MutationRemoveCourseMaterial($input : InputRemoveCourseMaterial){
+        response : removeCourseMaterial(input : $input){
+            ${COURSE_MATERIAL.ID}
         }
     }
 `;

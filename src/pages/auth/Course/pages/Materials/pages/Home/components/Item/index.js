@@ -4,58 +4,66 @@ import {
     Container,
     Body,
     Header,
-    Player,
-    ButtonClean,
+    BodyTitle,
+    BodyInfo,
+    BodyDate,
+    ButtonRemove,
     ButtonView,
+    ContainerButtons,
     Line
 } from './styles';
 
+import { toDate } from 'utils/convertValue';
 import Texts from 'config/Texts';
-import { RemoveIcon, EditIcon } from 'components/Icons';
+import { RemoveIcon } from 'components/Icons';
 import RemoveContainer from 'components/RemoveContainer';
+import Material from 'components/Material';
 
-export const Item = memo(({ className, onRemove, linkEdit, linkView, ...props }) => {
+export const Item = memo(({ id, title, date, onRemove, link, ...props }) => {
     const [tryRemove, setTryRemove] = useState(false);
-    const TEXTS = Texts.PAGE_AUTH_COURSE.VIDEOS;
+
+    const TEXTS = Texts.PAGE_AUTH_COURSE.MATERIALS;
 
     return (
         <Container
-            className={className}
+            {...props}
         >
             <Header>
-                <Player
-                    {...props}
+                <Material
+                    title={title}
                 />
             </Header>
             <Body>
+                <BodyInfo>
+                    <BodyTitle>
+                        {TEXTS.ADDED}
+                    </BodyTitle>
+                    <BodyDate>
+                        {toDate(date)}
+                    </BodyDate>
+                </BodyInfo>
                 <RemoveContainer
                     tryRemove={tryRemove}
                     onCancel={() => setTryRemove(false)}
                     onRemove={onRemove}
                 >
-                    <Line>
+                    <ContainerButtons>
                         <Line>
-                            <ButtonClean
+                            <ButtonRemove
                                 onClick={() => setTryRemove(true)}
                             >
                                 <RemoveIcon /> {TEXTS.BUTTON_REMOVE}
-                            </ButtonClean>
-                        </Line>
-                        <Line>
-                            <ButtonClean
-                                to={linkEdit}
-                            >
-                                <EditIcon /> {TEXTS.BUTTON_EDIT}
-                            </ButtonClean>
+                            </ButtonRemove>
                         </Line>
                         <Line>
                             <ButtonView
-                                to={linkView}
+                                href={link}
+                                target="_blank"
                             >
                                 {TEXTS.BUTTON_VIEW}
                             </ButtonView>
                         </Line>
-                    </Line>
+                    </ContainerButtons>
                 </RemoveContainer>
             </Body>
         </Container>
