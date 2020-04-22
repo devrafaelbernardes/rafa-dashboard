@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faSpinner, faEye, faEyeSlash, faLock, faShoppingBag, faGraduationCap, faPhotoVideo, faProjectDiagram, faHome, faTimes, faTrashAlt, faPlus, faSignOutAlt, faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faSpinner, faEye, faEyeSlash, faLock, faShoppingBag, faGraduationCap, faPhotoVideo, faProjectDiagram, faHome, faTimes, faTrashAlt, faPlus, faSignOutAlt, faUsers, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 export const UserIcon = (props) => (
     <Icon icon={faUser} {...props} />
@@ -12,6 +12,10 @@ export const UsersIcon = (props) => (
 
 export const RemoveIcon = (props) => (
     <Icon icon={faTrashAlt} {...props} />
+);
+
+export const EditIcon = (props) => (
+    <Icon icon={faEdit} {...props} />
 );
 
 export const PlusIcon = (props) => (

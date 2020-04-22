@@ -4,7 +4,7 @@ import NoImageSRC from 'assets/images/no-image.png';
 
 import { Container } from './styles';
 
-export function Image({ src = null, ...props }) {
+export function Image({ src = null, srcNoImage = null, ...props }) {
     const [image, setImage] = useState(null);
     
     useEffect(() => {
@@ -14,7 +14,7 @@ export function Image({ src = null, ...props }) {
     return (
         <Container
             {...props}
-            src={image || NoImageSRC}
+            src={image ? image : (srcNoImage || NoImageSRC)}
             onError={() => setImage(null)}
         />
     );

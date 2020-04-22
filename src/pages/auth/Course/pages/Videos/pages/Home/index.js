@@ -4,7 +4,7 @@ import { Container, Header, Body, ContainerItem, CardItem, HeaderInfo, HeaderBut
 
 import Texts from 'config/Texts';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import objectQuery, { GET_COURSE_VIDEOS } from 'services/api/query';
+import objectQuery, { GET_COURSE_VIDEOS, getImageUser } from 'services/api/query';
 import ComponentLoading from 'components/ComponentLoading';
 import List from 'components/List';
 import { PAGINATION, COURSE, COURSE_VIDEO, VIDEO } from 'services/api/responseAPI';
@@ -37,6 +37,7 @@ export function Home() {
     const TEXTS = Texts.PAGE_AUTH_COURSE.VIDEOS;
     const LINK_ADD = CourseURL(courseId).REDIRECT.VIDEOS.ADD;
     const linkEdit = (editId) => CourseURL(courseId).REDIRECT.VIDEOS.EDIT(editId);
+    const linkView = (viewId) => CourseURL(courseId).REDIRECT.VIDEOS.VIEW(viewId);
 
     useEffect(() => {
         if (data && data.response && data.response[COURSE.VIDEOS] && data.response[COURSE.VIDEOS][PAGINATION.ITEMS] && data.response[COURSE.VIDEOS][PAGINATION.ITEMS].length > 0) {
@@ -77,10 +78,11 @@ export function Home() {
                             return (
                                 <Video
                                     key={key}
-                                    url={item[COURSE_VIDEO.VIDEO] && item[COURSE_VIDEO.VIDEO][VIDEO.URL]}
+                                    thumbnail={getImageUser(item[COURSE_VIDEO.THUMBNAIL])}
                                     title={item[COURSE_VIDEO.NAME]}
                                     date={item[COURSE_VIDEO.CREATED_AT]}
-                                    linkView={linkEdit(videoId)}
+                                    linkEdit={linkEdit(videoId)}
+                                    linkView={linkView(videoId)}
                                     onRemove={() => remove(objectMutation({ courseId, videoId }))}
                                 />
                             )

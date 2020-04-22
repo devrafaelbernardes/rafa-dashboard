@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { ADMIN, IMAGE, BAG, PAGINATION, MEDIA, SOCIAL_NETWORK, PAGE_INFO, COURSE, COURSE_STUDENT, STUDENT, COURSE_ACCESS, COURSE_VIDEO, VIDEO } from './responseAPI';
+import { ADMIN, IMAGE, BAG, PAGINATION, MEDIA, SOCIAL_NETWORK, PAGE_INFO, COURSE, COURSE_STUDENT, STUDENT, COURSE_ACCESS, COURSE_VIDEO, VIDEO, COURSE_MATERIAL, MATERIAL } from './responseAPI';
 
 export const GET_CURRENTY_USER = gql`{   
     response : me_admin{
@@ -200,6 +200,30 @@ export const GET_COURSE_STUDENTS = gql`
     }
 `;
 
+export const GET_COURSE_MATERIALS = gql`
+    query QueryGetCourseStudents($id : ID, $pagination : InputPagination, $orderBy : [InputOrderQuery!]){
+        response : course(id : $id){
+            ${COURSE.ID}
+            ${COURSE.MATERIALS}(pagination : $pagination, orderBy : $orderBy){
+                ${PAGINATION.TOTAL_ITEMS}
+                ${PAGINATION.ITEMS}{
+                    ${COURSE_MATERIAL.ID}
+                    ${COURSE_MATERIAL.NAME}
+                    ${COURSE_MATERIAL.CREATED_AT}
+                    ${COURSE_MATERIAL.MATERIAL}{
+                        ${MATERIAL.ID}
+                        ${MATERIAL.URL}
+                    }
+                }
+                ${PAGINATION.PAGE_INFO} {
+                    ${PAGE_INFO.HAS_PREVIOUS_PAGE}
+                    ${PAGE_INFO.HAS_NEXT_PAGE}
+                }
+            }
+        }
+    }
+`;
+
 export const GET_COURSE_VIDEOS = gql`
     query QueryGetCourseVideos($id : ID, $pagination : InputPagination, $orderBy : [InputOrderQuery!]){
         response : course(id : $id){
@@ -212,7 +236,10 @@ export const GET_COURSE_VIDEOS = gql`
                     ${COURSE_VIDEO.CREATED_AT}
                     ${COURSE_VIDEO.VIDEO}{
                         ${VIDEO.ID}
-                        ${VIDEO.URL}
+                    }
+                    ${COURSE_VIDEO.THUMBNAIL}{
+                        ${IMAGE.ID}
+                        ${IMAGE.URL}
                     }
                 }
             }
@@ -229,6 +256,10 @@ export const GET_COURSE_VIDEO = gql`
             ${COURSE_VIDEO.VIDEO}{
                 ${VIDEO.ID}
                 ${VIDEO.URL}
+            }
+            ${COURSE_VIDEO.THUMBNAIL}{
+                ${IMAGE.ID}
+                ${IMAGE.URL}
             }
         }
     }

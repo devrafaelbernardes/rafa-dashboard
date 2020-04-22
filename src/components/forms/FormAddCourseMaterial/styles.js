@@ -12,49 +12,21 @@ export const Line = styled(Row)`
 `;
 
 export const ContainerInputFile = styled.div`
-    margin-top: 10px;
+    margin-right: 10px;
 `;
 
-export const CourseVideoPreviewContainer = styled(Row)`
+export const CourseMaterialPreviewContainer = styled(Col).attrs({
+    xs : 12,
+    sm : 12,
+    md : 6,
+    lg : 4,
+})`
     padding: 0;
     margin-bottom: 15px;
 `;
 
-export const CourseVideoPreviewGeneral = styled(Row)`
-    padding: 0;
-`;
-
-export const CourseVideoPreviewCard = styled(Card)`
+export const CourseMaterialPreview = styled(Card)`
     padding: 15px;
-`;
-
-export const CourseVideoPreview = styled(Col).attrs({
-    xs : 12,
-    sm : 12,
-    md : 6,
-    lg : 6,
-})`
-    padding: 0;
-`;
-
-export const Title = styled(Row)`
-    padding: 0 0;
-    font-weight: bold;
-`;
-
-export const CourseThumbnailPreview = styled(Col).attrs({
-    xs : 12,
-    sm : 12,
-    md : 6,
-    lg : 6,
-})`
-    padding: 0;
-    padding-left: 15px;
-
-    @media screen and (max-width:${({ theme }) => theme.sizes.sm }){
-        padding-left: 0;
-        padding-top: 15px;
-    }
 `;
 
 export const ContainerResult = styled(Row)`

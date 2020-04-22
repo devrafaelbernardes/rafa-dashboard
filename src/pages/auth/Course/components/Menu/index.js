@@ -20,6 +20,10 @@ export function Menu({ ...props }) {
                     text : TEXTS.BUTTON_HOME,
                 },
                 {
+                    to : REDIRECT.MATERIALS.BASE,
+                    text : TEXTS.BUTTON_MATERIALS,
+                },
+                {
                     to : REDIRECT.VIDEOS.BASE,
                     text : TEXTS.BUTTON_VIDEOS,
                 },

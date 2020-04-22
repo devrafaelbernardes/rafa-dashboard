@@ -7,13 +7,11 @@ import HomeURL from 'routes/URLs/HomeURL';
 import ErrorURL from 'routes/URLs/ErrorURL';
 
 // PAGES AUTH
-import Add from 'pages/auth/Course/pages/Videos/pages/Add';
-import Edit from 'pages/auth/Course/pages/Videos/pages/Edit';
-import Home from 'pages/auth/Course/pages/Videos/pages/Home';
-import View from 'pages/auth/Course/pages/Videos/pages/View';
+import Add from 'pages/auth/Course/pages/Materials/pages/Add';
+import Home from 'pages/auth/Course/pages/Materials/pages/Home';
 
-export function RouterCourseVideos() {
-    const ROUTER = CourseURL().ROUTER.VIDEOS;
+export function RouterCourseMaterials() {
+    const ROUTER = CourseURL().ROUTER.MATERIALS;
     const DESCONNECTED_LINK = HomeURL().REDIRECT.BASE;
     const ERROR_LINK = ErrorURL().REDIRECT.BASE;
 
@@ -31,16 +29,6 @@ export function RouterCourseVideos() {
                 componentAuthenticated={Add}
                 redirectNotAuthenticatedURL={DESCONNECTED_LINK}
             />
-            <ProtectedRoute
-                path={ROUTER.EDIT()}
-                componentAuthenticated={Edit}
-                redirectNotAuthenticatedURL={DESCONNECTED_LINK}
-            />
-            <ProtectedRoute
-                path={ROUTER.VIEW()}
-                componentAuthenticated={View}
-                redirectNotAuthenticatedURL={DESCONNECTED_LINK}
-            />
 
             { /* ANY */}
             <ProtectedRoute
@@ -51,4 +39,4 @@ export function RouterCourseVideos() {
     );
 }
 
-export default RouterCourseVideos;
+export default RouterCourseMaterials;
