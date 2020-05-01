@@ -138,6 +138,7 @@ export const GET_COURSE_ACCESSES = gql`
                 ${COURSE_ACCESS.ID}
                 ${COURSE_ACCESS.CURRENTY_STATE}
                 ${COURSE_ACCESS.CREATED_AT}
+                ${COURSE_ACCESS.EMAIL}
                 ${COURSE_ACCESS.TOKEN}
                 ${COURSE_ACCESS.STUDENT}{
                     ${STUDENT.FULL_NAME}

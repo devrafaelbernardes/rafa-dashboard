@@ -1,18 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useSubscription, useQuery } from '@apollo/react-hooks';
 import axios from 'axios';
+
 import * as storage from 'storage';
+import { GET_CURRENTY_USER } from 'services/api/query';
+import { ADMIN } from 'services/api/responseAPI';
+import objectSubscription, { ADMIN_UPDATED } from 'services/api/subscription';
 
 const useRequest = ({ request, url, autoLoad = true, data, config }) => {
     let [reload, setReload] = useState(false);
     let [loading, setLoading] = useState(false);
     let [_data, setData] = useState(null);
     let [error, setError] = useState(null);
-
-    useEffect(() => {
-        if(reload || autoLoad){
-            load();
-        }
-    }, [reload, autoLoad]);
 
     const load = useCallback(async() => {
         setLoading(true);
@@ -27,6 +26,12 @@ const useRequest = ({ request, url, autoLoad = true, data, config }) => {
         setLoading(false);
         return result;
     }, [request, url, data, config]);
+
+    useEffect(() => {
+        if(reload || autoLoad){
+            load();
+        }
+    }, [reload, autoLoad, load]);
 
     const refresh = useCallback(async() => {
         setReload(prev => !prev);
@@ -54,7 +59,33 @@ export function usePersistedState(key, initialState, isJSON = false) {
 
     useEffect(() => {
         storage.set(key, isJSON ? JSON.stringify(state) : state);
-    }, [key, state]);
+    }, [key, state, isJSON]);
 
     return [state, setState];
+}
+
+export const useAuth = () => {
+    let [currentyData, setCurrentyData] = useState(null);
+    let [currentyError, setCurrentyError] = useState(null);
+    
+    const { data, loading, error, refetch } = useQuery(GET_CURRENTY_USER);
+    const { data: dataUpdateUser, error : errorUpdateUser } = useSubscription(ADMIN_UPDATED, objectSubscription({ adminId: currentyData && currentyData[ADMIN.ID] }));
+
+    useEffect(() => {
+        if (error) {
+            setCurrentyError(error);
+        } else if (data && data.response) {
+            setCurrentyData(data.response);
+        }
+    }, [data, error]);
+
+    useEffect(() => {
+        if (errorUpdateUser) {
+            setCurrentyError(errorUpdateUser);
+        } else if (dataUpdateUser && dataUpdateUser.response) {
+            setCurrentyData(dataUpdateUser.response);
+        }
+    }, [dataUpdateUser, errorUpdateUser]);
+
+    return { loading, data: currentyData, error: currentyError, refetch };
 }
