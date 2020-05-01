@@ -69,7 +69,7 @@ export const useAuth = () => {
     let [currentyError, setCurrentyError] = useState(null);
     
     const { data, loading, error, refetch } = useQuery(GET_CURRENTY_USER);
-    const { data: dataUpdateUser, error : errorUpdateUser } = useSubscription(ADMIN_UPDATED, objectSubscription({ adminId: currentyData && currentyData[ADMIN.ID] }));
+    const { data: dataUpdateUser } = useSubscription(ADMIN_UPDATED, objectSubscription({ adminId: currentyData && currentyData[ADMIN.ID] }));
 
     useEffect(() => {
         if (error) {
@@ -80,12 +80,10 @@ export const useAuth = () => {
     }, [data, error]);
 
     useEffect(() => {
-        if (errorUpdateUser) {
-            setCurrentyError(errorUpdateUser);
-        } else if (dataUpdateUser && dataUpdateUser.response) {
+        if (dataUpdateUser && dataUpdateUser.response) {
             setCurrentyData(dataUpdateUser.response);
         }
-    }, [dataUpdateUser, errorUpdateUser]);
+    }, [dataUpdateUser]);
 
     return { loading, data: currentyData, error: currentyError, refetch };
 }
