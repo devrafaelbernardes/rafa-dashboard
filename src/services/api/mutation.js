@@ -276,6 +276,7 @@ export const GENERATE_COURSE_ACCESS = gql`
             ${COURSE_ACCESS.CURRENTY_STATE}
             ${COURSE_ACCESS.CREATED_AT}
             ${COURSE_ACCESS.TOKEN}
+            ${COURSE_ACCESS.EMAIL}
             ${COURSE_ACCESS.STUDENT}{
                 ${STUDENT.FULL_NAME}
                 ${STUDENT.PROFILE_IMAGE}{

@@ -22,6 +22,7 @@ export const UserAvatar = styled(Avatar)`
     font-size: ${ ({ fontSize }) => `${fontSize}px`} !important;
     background: ${ ({ theme }) => theme.colors.primary} !important;
     border-radius: ${ ({ theme }) => theme.sizes.border_radius} !important;
+    text-transform: uppercase !important;
 `;
 
 export const DefaultImage = styled(ContentImage)`

@@ -72,6 +72,7 @@ export const COURSE_ACCESS = {
     ID : 'id',
     CURRENTY_STATE : 'currenty_state',
     TOKEN : 'token',
+    EMAIL : 'email',
     COURSE : 'course',
     STUDENT : 'student',
     IS_ACTIVE : 'is_active',
@@ -162,6 +163,7 @@ export const STUDENT = {
     FULL_NAME : 'full_name',
     EMAIL : 'email',
     PROFILE_IMAGE : 'profile_image',
+    IS_VALIDATED_EMAIL : 'is_validated_email',
     IS_ACTIVE : 'is_active',
     CREATED_AT : 'created_at',
 };

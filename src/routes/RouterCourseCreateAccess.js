@@ -7,7 +7,7 @@ import HomeURL from 'routes/URLs/HomeURL';
 import ErrorURL from 'routes/URLs/ErrorURL';
 
 // PAGES AUTH
-//import Add from 'pages/auth/Course/pages/CreateAccess/pages/Add';
+import Add from 'pages/auth/Course/pages/CreateAccess/pages/Add';
 import Home from 'pages/auth/Course/pages/CreateAccess/pages/Home';
 
 export function RouterCourseCreateAccess() {
@@ -24,11 +24,11 @@ export function RouterCourseCreateAccess() {
                 componentAuthenticated={Home}
                 redirectNotAuthenticatedURL={DESCONNECTED_LINK}
             />
-            {/* <ProtectedRoute
+            <ProtectedRoute
                 path={ROUTER.ADD}
                 componentAuthenticated={Add}
                 redirectNotAuthenticatedURL={DESCONNECTED_LINK}
-            /> */}
+            />
 
             { /* ANY */}
             <ProtectedRoute

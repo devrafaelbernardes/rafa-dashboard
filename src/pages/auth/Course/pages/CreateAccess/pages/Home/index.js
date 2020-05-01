@@ -12,6 +12,7 @@ import {
     ContainerItem,
     Footer,
     ButtonLoadMore,
+    ButtonGenerate,
 } from './styles';
 
 import Texts from 'config/Texts';
@@ -28,6 +29,7 @@ import ComponentLoading from 'components/ComponentLoading';
 import Access from 'components/Access';
 import { LINK_ACCESS_COURSE } from 'config/infos';
 import objectMutation, { GENERATE_COURSE_ACCESS } from 'services/api/mutation';
+import CourseURL from 'routes/URLs/CourseURL';
 
 const Item = memo(({ ...props }) => (
     <ContainerItem>
@@ -57,6 +59,7 @@ export function Home() {
     }));
     const [addNewAccess, { data: dataNewAccess, loading: loadingNewAccess }] = useMutation(GENERATE_COURSE_ACCESS);
     const TEXTS = Texts.PAGE_AUTH_COURSE.CREATE_ACCESS;
+    const linkToAdd = CourseURL(courseId).REDIRECT.CREATE_ACCESS.ADD;
 
     const setItems = useCallback((data, more = false) => {
         if (data && data.response && data.response[PAGINATION.ITEMS] && data.response[PAGINATION.ITEMS].length > 0) {
@@ -119,11 +122,17 @@ export function Home() {
                     <span>{totalAccess}</span>
                 </HeaderInfo>
                 <HeaderButtonContainer>
-                    <ButtonAdd
+                    <ButtonGenerate
                         onClick={() => addNewAccess(objectMutation({ courseId }))}
                         loading={loadingNewAccess}
                     >
                         <PlusIcon />
+                        {TEXTS.GENERATE_ACCESS}
+                    </ButtonGenerate>
+                    <ButtonAdd
+                        to={linkToAdd}
+                        loading={loadingNewAccess}
+                    >
                         {TEXTS.ADD_ACCESS}
                     </ButtonAdd>
                 </HeaderButtonContainer>
@@ -135,6 +144,7 @@ export function Home() {
                         renderItem={(item, key) => {
                             const accessId = item[COURSE_ACCESS.ID];
                             const token = item[COURSE_ACCESS.TOKEN];
+                            const email = item[COURSE_ACCESS.EMAIL];
                             const state = item[COURSE_ACCESS.CURRENTY_STATE];
                             const createdAt = item[COURSE_ACCESS.CREATED_AT];
                             const student = item[COURSE_ACCESS.STUDENT];
@@ -148,6 +158,7 @@ export function Home() {
                                     isNew={item.isNew === true}
                                     id={accessId}
                                     state={state}
+                                    email={email}
                                     student={student}
                                     link={link}
                                     createdAt={createdAt}

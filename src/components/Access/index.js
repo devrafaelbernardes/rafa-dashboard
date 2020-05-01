@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 
 import {
     Container,
@@ -16,7 +16,9 @@ import {
     HeaderUserName,
     HeaderNewItem,
     HeaderUserAvatarContainer,
-    HeaderUserInfo
+    HeaderUserInfo,
+    BodyBox,
+    ShowLinkButton
 } from './styles';
 
 import Texts from 'config/Texts';
@@ -26,7 +28,8 @@ import { STUDENT, COURSE } from 'services/api/responseAPI';
 import Avatar from 'components/Avatar';
 import { getImageUser } from 'services/api/query';
 
-export function Home({ id, state, link = null, course = null, student = null, createdAt, isNew = false, ...props }) {
+export function Home({ id, state, email = null, link = null, course = null, student = null, createdAt, isNew = false, ...props }) {
+    const [showLink, setShowLink] = useState(false);
     const { colors } = useContext(ThemeContext);
     const TEXTS = Texts.PAGE_AUTH_COURSE.CREATE_ACCESS;
 
@@ -46,6 +49,11 @@ export function Home({ id, state, link = null, course = null, student = null, cr
             },
         };
         return STATE[state] || STATE[1]
+    }
+
+    const handleShowLink = (e) => {
+        e.preventDefault();
+        setShowLink(prev => !prev);
     }
 
     return (
@@ -101,17 +109,35 @@ export function Home({ id, state, link = null, course = null, student = null, cr
                     </HeaderUserContainer>
                 }
             </Header>
-            {
-                link &&
-                <Body>
-                    <BodyTitle>
-                        {TEXTS.LINK}
-                    </BodyTitle>
-                    <BodyLink>
-                        {link}
-                    </BodyLink>
-                </Body>
-            }
+            <Body>
+                {
+                    email &&
+                    <BodyBox>
+                        <BodyTitle>
+                            {TEXTS.EMAIL}
+                        </BodyTitle>
+                        <BodyLink>
+                            {email}
+                        </BodyLink>
+                    </BodyBox>
+                }
+                {
+                    link &&
+                    <BodyBox>
+                        <BodyTitle>
+                            {TEXTS.LINK}
+                        </BodyTitle>
+                        <BodyLink>
+                            {showLink && link}
+                            <ShowLinkButton
+                                onClick={(e) => handleShowLink(e)}
+                            >
+                                {showLink ? TEXTS.HIDE_LINK : TEXTS.SHOW_LINK}
+                            </ShowLinkButton>
+                        </BodyLink>
+                    </BodyBox>
+                }
+            </Body>
             <Footer>
                 <FooterStateContainer>
                     <FooterState color={defineState().color}>
