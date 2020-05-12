@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { ADMIN, IMAGE, BAG, PAGINATION, MEDIA, SOCIAL_NETWORK, PAGE_INFO, COURSE, COURSE_STUDENT, STUDENT, COURSE_ACCESS, COURSE_VIDEO, VIDEO, COURSE_MATERIAL, MATERIAL } from './responseAPI';
+import { ADMIN, IMAGE, BAG, PAGINATION, MEDIA, SOCIAL_NETWORK, PAGE_INFO, COURSE, COURSE_STUDENT, STUDENT, COURSE_ACCESS, COURSE_VIDEO, VIDEO, COURSE_MATERIAL, MATERIAL, EMAIL } from './responseAPI';
 
 export const GET_CURRENTY_USER = gql`{   
     response : me_admin{
@@ -86,7 +86,7 @@ export const GET_SOCIAL_NETWORKS = gql`
 `;
 
 export const GET_COURSES = gql`
-    query QueryGetMedias($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
+    query QueryGetCourses($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
         response : courses(pagination : $pagination, orderBy : $orderBy){
             ${PAGINATION.TOTAL_ITEMS}
             ${PAGINATION.ITEMS} {
@@ -107,6 +107,55 @@ export const GET_COURSES = gql`
     }
 `;
 
+export const GET_COURSES_TO_SEND_EMAIL = gql`
+    query QueryGetCoursesToSendEmail($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
+        response : courses(pagination : $pagination, orderBy : $orderBy){
+            ${PAGINATION.TOTAL_ITEMS}
+            ${PAGINATION.ITEMS} {
+                ${COURSE.ID}
+                ${COURSE.NAME}
+                ${COURSE.PROFILE_IMAGE}{
+                    ${IMAGE.ID}
+                    ${IMAGE.URL}
+                }
+            }
+            ${PAGINATION.PAGE_INFO} {
+                ${PAGE_INFO.HAS_PREVIOUS_PAGE}
+                ${PAGE_INFO.HAS_NEXT_PAGE}
+            }
+        }
+    }
+`;
+
+export const GET_EMAILS = gql`
+    query QueryGetEmails($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
+        response : emails(pagination : $pagination, orderBy : $orderBy){
+            ${PAGINATION.TOTAL_ITEMS}
+            ${PAGINATION.ITEMS} {
+                ${EMAIL.ID}
+                ${EMAIL.TO}
+                ${EMAIL.SUBJECT}
+                ${EMAIL.MESSAGE}
+                ${EMAIL.CREATED_AT}
+                ${EMAIL.STUDENT}{
+                    ${STUDENT.ID}
+                    ${STUDENT.NAME}
+                    ${STUDENT.LASTNAME}
+                    ${STUDENT.FULL_NAME}
+                    ${STUDENT.PROFILE_IMAGE}{
+                        ${IMAGE.ID}
+                        ${IMAGE.URL}
+                    }
+                }
+            }
+            ${PAGINATION.PAGE_INFO} {
+                ${PAGE_INFO.HAS_PREVIOUS_PAGE}
+                ${PAGE_INFO.HAS_NEXT_PAGE}
+            }
+        }
+    }
+`;
+
 export const GET_STUDENTS = gql`
     query QueryGetStudents($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
         response : students(pagination : $pagination, orderBy : $orderBy){
@@ -117,6 +166,58 @@ export const GET_STUDENTS = gql`
                 ${STUDENT.LASTNAME}
                 ${STUDENT.FULL_NAME}
                 ${STUDENT.EMAIL}
+                ${STUDENT.IS_VALIDATED_EMAIL}
+                ${STUDENT.COUNT_COURSES}
+                ${STUDENT.PROFILE_IMAGE}{
+                    ${IMAGE.ID}
+                    ${IMAGE.URL}
+                }
+            }
+            ${PAGINATION.PAGE_INFO} {
+                ${PAGE_INFO.HAS_PREVIOUS_PAGE}
+                ${PAGE_INFO.HAS_NEXT_PAGE}
+            }
+        }
+    }
+`;
+
+export const GET_STUDENTS_NO_COURSE = gql`
+    query QueryGetStudentsNoCourse($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
+        response : students_no_course(pagination : $pagination, orderBy : $orderBy){
+            ${PAGINATION.TOTAL_ITEMS}
+            ${PAGINATION.ITEMS} {
+                ${STUDENT.ID}
+                ${STUDENT.NAME}
+                ${STUDENT.LASTNAME}
+                ${STUDENT.FULL_NAME}
+                ${STUDENT.EMAIL}
+                ${STUDENT.IS_VALIDATED_EMAIL}
+                ${STUDENT.COUNT_COURSES}
+                ${STUDENT.PROFILE_IMAGE}{
+                    ${IMAGE.ID}
+                    ${IMAGE.URL}
+                }
+            }
+            ${PAGINATION.PAGE_INFO} {
+                ${PAGE_INFO.HAS_PREVIOUS_PAGE}
+                ${PAGE_INFO.HAS_NEXT_PAGE}
+            }
+        }
+    }
+`;
+
+export const GET_STUDENTS_HAVE_COURSE = gql`
+    query QueryGetStudentsHaveCourse($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
+        response : students_have_course(pagination : $pagination, orderBy : $orderBy){
+            ${PAGINATION.TOTAL_ITEMS}
+            ${PAGINATION.ITEMS} {
+                ${STUDENT.ID}
+                ${STUDENT.NAME}
+                ${STUDENT.LASTNAME}
+                ${STUDENT.FULL_NAME}
+                ${STUDENT.EMAIL}
+                ${STUDENT.IS_VALIDATED_EMAIL}
+                ${STUDENT.COUNT_COURSES}
                 ${STUDENT.PROFILE_IMAGE}{
                     ${IMAGE.ID}
                     ${IMAGE.URL}
@@ -186,6 +287,7 @@ export const GET_COURSE_STUDENTS = gql`
                         ${STUDENT.ID}
                         ${STUDENT.FULL_NAME}
                         ${STUDENT.EMAIL}
+                        ${STUDENT.IS_VALIDATED_EMAIL}
                         ${STUDENT.PROFILE_IMAGE} {
                             ${IMAGE.ID}
                             ${IMAGE.URL}

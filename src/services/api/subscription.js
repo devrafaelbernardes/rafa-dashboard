@@ -57,6 +57,7 @@ export const COURSE_STUDENT_ADDED = gql`
                 ${STUDENT.ID}
                 ${STUDENT.FULL_NAME}
                 ${STUDENT.EMAIL}
+                ${STUDENT.IS_VALIDATED_EMAIL}
                 ${STUDENT.PROFILE_IMAGE} {
                     ${IMAGE.ID}
                     ${IMAGE.URL}
