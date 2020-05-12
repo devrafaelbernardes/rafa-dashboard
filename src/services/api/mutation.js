@@ -287,6 +287,30 @@ export const GENERATE_COURSE_ACCESS = gql`
     }
 `;
 
+export const SEND_EMAIL_TO_ALL = gql`
+    mutation MutationSendEmailToAll($input : InputSendEmailToAll){
+        response : sendEmailToAll(input : $input)
+    }
+`;
+
+export const SEND_EMAIL_TO = gql`
+    mutation MutationSendEmailTo($input : InputSendEmailTo){
+        response : sendEmailTo(input : $input)
+    }
+`;
+
+export const SEND_EMAIL_TO_COURSE = gql`
+    mutation MutationSendEmailToCourse($input : InputSendEmailToCourse){
+        response : sendEmailToCourse(input : $input)
+    }
+`;
+
+export const SEND_EMAIL_TO_NO_COURSE = gql`
+    mutation MutationSendEmailToNoCourse($input : InputSendEmailToNoCourse){
+        response : sendEmailToNoCourse(input : $input)
+    }
+`;
+
 export const objectMutation = (input, params) => ({
     variables: { input, ...params }
 });

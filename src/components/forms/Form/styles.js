@@ -6,7 +6,7 @@ export const Container = styled(Row)`
 `;
 
 export const Header = styled(Row)`
-    
+    margin-bottom: 10px;
 `;
 
 export const Title = styled(Row)`

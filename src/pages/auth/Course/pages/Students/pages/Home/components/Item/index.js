@@ -16,7 +16,7 @@ import { RemoveIcon } from 'components/Icons';
 import RemoveContainer from 'components/RemoveContainer';
 import Student from 'components/Student';
 
-export const Item = memo(({ id, title, subtitle, image, date, onRemove, ...props }) => {
+export const Item = memo(({ id, title, subtitle, image, date, onRemove, isValidated, ...props }) => {
     const [tryRemove, setTryRemove] = useState(false);
 
     const TEXTS = Texts.PAGE_AUTH_COURSE.STUDENTS;
@@ -27,6 +27,7 @@ export const Item = memo(({ id, title, subtitle, image, date, onRemove, ...props
         >
             <Header>
                 <Student
+                    isValidated={isValidated}
                     title={title}
                     subtitle={subtitle}
                     image={image}

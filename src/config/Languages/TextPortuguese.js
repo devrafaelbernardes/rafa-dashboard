@@ -15,6 +15,20 @@ export const TextPortuguese = {
     LOADING: {
         TITLE: 'Carregando',
     },
+    STUDENT: {
+        COURSES: 'Cursos',
+        COURSE: 'Curso',
+        VALIDATED: 'Cadastro válido',
+        INVALIDATE: 'Validação pendente',
+    },
+    EMAIL: {
+        NAME: 'Nome do usuário',
+        SHOW: 'Mostrar',
+        HIDE: 'Esconder',
+        EMAIL: 'Email',
+        SUBJECT: 'Assunto',
+        MESSAGE: 'Mensagem',
+    },
     COPYRIGHT: {
         TITLE: `Copyright © ${SITE_NAME} - Todos os direitos reservados`,
         SUBTITLE: `Desenvolvido por`,
@@ -37,6 +51,7 @@ export const TextPortuguese = {
         BUTTON_MEDIA: 'Mídias',
         BUTTON_PROFILE: 'Perfil',
         BUTTON_COURSE: 'Cursos',
+        BUTTON_EMAIL: 'Emails',
         BUTTON_SOCIAL_NETWORK: 'Redes sociais',
         BUTTON_LOGOUT: 'Sair',
     },
@@ -182,16 +197,87 @@ export const TextPortuguese = {
         },
     },
     PAGE_AUTH_STUDENTS: {
-        HEADER : {
-            TITLE: 'Alunos', 
-            SUBTITLE: 'Quantidade de alunos:',
-            LOADING: 'Contando...',
+        MENU : {
+            HOME: 'Todos',
+            NO_COURSE: 'Sem cursos',
+            HAS_COURSE: 'Em cursos',
         },
-        BODY : {
-            NOT_FOUND_TITLE: 'Nenhum aluno encontrado.',
+        HOME : {
+            HEADER : {
+                TITLE: 'Alunos', 
+                SUBTITLE: 'Quantidade de alunos:',
+                LOADING: 'Contando...',
+            },
+            BODY : {
+                NOT_FOUND_TITLE: 'Nenhum aluno encontrado.',
+            },
+            FOOTER : {
+                BUTTON_LOAD_MORE: 'Carregar mais',
+            },
         },
-        FOOTER : {
-            BUTTON_LOAD_MORE: 'Carregar mais',
+        NO_COURSE : {
+            HEADER : {
+                TITLE: 'Alunos sem cursos', 
+                SUBTITLE: 'Quantidade de alunos:',
+                LOADING: 'Contando...',
+            },
+            BODY : {
+                NOT_FOUND_TITLE: 'Nenhum aluno encontrado.',
+            },
+            FOOTER : {
+                BUTTON_LOAD_MORE: 'Carregar mais',
+            },
+        },
+        HAS_COURSE : {
+            HEADER : {
+                TITLE: 'Alunos em cursos', 
+                SUBTITLE: 'Quantidade de alunos:',
+                LOADING: 'Contando...',
+            },
+            BODY : {
+                NOT_FOUND_TITLE: 'Nenhum aluno encontrado.',
+            },
+            FOOTER : {
+                BUTTON_LOAD_MORE: 'Carregar mais',
+            },
+        },
+    },
+    PAGE_AUTH_EMAILS: {
+        MENU : {
+            HOME: 'Todos',
+            SEND_TO: 'Enviar email',
+        },
+        HOME : {
+            HEADER : {
+                TITLE: 'Emails', 
+                SUBTITLE: 'Quantidade de emails:',
+                LOADING: 'Contando...',
+            },
+            BODY : {
+                NOT_FOUND_TITLE: 'Nenhum email encontrado.',
+            },
+            FOOTER : {
+                BUTTON_LOAD_MORE: 'Carregar mais',
+            },
+        },
+        TO : {
+            HEADER : {
+                TITLE: 'Controle de emails',
+            },
+            BODY : {
+                SEND: 'Enviar email',
+                SEND_TO: 'Enviar para:',
+                SEND_TO_ALL: 'Todos alunos',
+                SEND_TO_COURSE: 'Algum Curso',
+                SEND_TO_NO_COURSE: 'Pessoas sem curso',
+                SEND_TO_SINGLE: 'Alguém',
+            },
+            EMAIL_COURSE : {
+                SEND: 'Enviar',
+                SEND_TO: 'Para:',
+                DESCRIPTION_COURSE: 'Você enviará email para todos alunos do curso.',
+                CHOISE_COURSE: 'Para qual curso quer enviar?',
+            },
         },
     },
     PAGE_AUTH_PROFILE: {
@@ -358,6 +444,40 @@ export const TextPortuguese = {
         BUTTON_BACK: 'Voltar',
         SUCCESS: 'Adicionado com sucesso.',
         ERROR: 'Erro ao adicionar, por favor tente novamente mais tarde.',
+    },
+    FORM_SEND_EMAIL_TO_ALL: {
+        TITLE: 'Enviar email para todos do sistema.',
+        SUBJECT: 'Assunto',
+        MESSAGE: 'Mensagem',
+        BUTTON_SUBMIT: 'Enviar',
+        SUCCESS: 'Enviado com sucesso.',
+        ERROR: 'Erro ao enviar, por favor verifique seus dados.',
+    },
+    FORM_SEND_EMAIL_TO_NO_COURSE: {
+        TITLE: 'Enviar email para os alunos SEM curso.',
+        SUBJECT: 'Assunto',
+        MESSAGE: 'Mensagem',
+        BUTTON_SUBMIT: 'Enviar',
+        SUCCESS: 'Enviado com sucesso.',
+        ERROR: 'Erro ao enviar, todos alunos estão em cursos ou seus dados estão inválidos.',
+    },
+    FORM_SEND_EMAIL_TO_COURSE: {
+        TITLE: 'Enviar email para o curso.',
+        SUBJECT: 'Assunto',
+        MESSAGE: 'Mensagem',
+        BUTTON_CANCEL: 'Cancelar',
+        BUTTON_SUBMIT: 'Enviar',
+        SUCCESS: 'Enviado com sucesso.',
+        ERROR: 'Erro ao enviar, nenhum aluno participa do curso ou seus dados estão inválidos.',
+    },
+    FORM_SEND_EMAIL_TO: {
+        TITLE: 'Envie um email para alguém:',
+        EMAIL: 'Email da pessoa',
+        SUBJECT: 'Assunto',
+        MESSAGE: 'Mensagem',
+        BUTTON_SUBMIT: 'Enviar',
+        SUCCESS: 'Enviado com sucesso.',
+        ERROR: 'Erro ao enviar, por favor verifique seus dados.',
     },
     FORM_UPDATE_COURSE: {
         NAME: 'Nome do curso',

@@ -109,6 +109,16 @@ export const COURSE_VIDEO = {
     CREATED_AT : 'created_at',
 };
 
+export const EMAIL = {
+    ID : 'id',
+    TO : 'to',
+    STUDENT : 'student',
+    SUBJECT : 'subject',
+    MESSAGE : 'message',
+    IS_ACTIVE : 'is_active',
+    CREATED_AT : 'created_at',
+};
+
 export const IMAGE = {
     ID : 'id',
     NAME : 'name',
@@ -164,6 +174,7 @@ export const STUDENT = {
     EMAIL : 'email',
     PROFILE_IMAGE : 'profile_image',
     IS_VALIDATED_EMAIL : 'is_validated_email',
+    COUNT_COURSES : 'count_courses',
     IS_ACTIVE : 'is_active',
     CREATED_AT : 'created_at',
 };

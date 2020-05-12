@@ -5,6 +5,7 @@ import ProtectedRoute from 'routes/ProtectedRoute';
 import BagURL from 'routes/URLs/BagURL';
 import CoursesURL from 'routes/URLs/CoursesURL';
 import CourseURL from 'routes/URLs/CourseURL';
+import EmailsURL from 'routes/URLs/EmailsURL';
 import HomeURL from 'routes/URLs/HomeURL';
 import LogonURL from 'routes/URLs/LogonURL';
 import MediaURL from 'routes/URLs/MediaURL';
@@ -19,6 +20,7 @@ import PageNotFound from 'pages/errors/PageNotFound';
 import Bag from 'pages/auth/Bag';
 import Course from 'pages/auth/Course';
 import Courses from 'pages/auth/Courses';
+import Emails from 'pages/auth/Emails';
 import HomeAuth from 'pages/auth/Home';
 import Media from 'pages/auth/Media';
 import Profile from 'pages/auth/Profile';
@@ -62,6 +64,11 @@ export function RouterApp() {
             <ProtectedRoute
                 path={CourseURL().ROUTER.BASE}
                 componentAuthenticated={Course}
+                redirectNotAuthenticatedURL={DESCONNECTED_LINK}
+            />
+            <ProtectedRoute
+                path={EmailsURL().ROUTER.BASE}
+                componentAuthenticated={Emails}
                 redirectNotAuthenticatedURL={DESCONNECTED_LINK}
             />
             <ProtectedRoute

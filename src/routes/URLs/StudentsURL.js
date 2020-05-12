@@ -7,9 +7,13 @@ export const StudentsURL = () => {
     return {
         ROUTER : {
             BASE : formatURL(),
+            NO_COURSE : formatURL('hasNoCourse/'),
+            HAS_COURSE : formatURL('hasCourse/'),
         },
         REDIRECT : {
             BASE : formatURL(),
+            NO_COURSE : formatURL('hasNoCourse/'),
+            HAS_COURSE : formatURL('hasCourse/'),
         }
     };
 };

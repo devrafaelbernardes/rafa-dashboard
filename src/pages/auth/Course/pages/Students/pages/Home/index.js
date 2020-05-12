@@ -124,10 +124,12 @@ export function Home() {
                             let email = null;
                             let image = null;
                             let studentId = null;
+                            let studentValidated = null;
                             if (student) {
                                 studentId = student[STUDENT.ID];
                                 name = student[STUDENT.FULL_NAME];
                                 email = student[STUDENT.EMAIL];
+                                studentValidated = student[STUDENT.IS_VALIDATED_EMAIL];
                                 image = getImageUser(student[STUDENT.PROFILE_IMAGE]);
                             }
                             return (
@@ -140,6 +142,7 @@ export function Home() {
                                             subtitle={email}
                                             image={image}
                                             date={date}
+                                            isValidated={studentValidated}
                                             onRemove={() => remove(objectMutation({ courseId, studentId }))}
                                         />
                                     </StudentGeneral>

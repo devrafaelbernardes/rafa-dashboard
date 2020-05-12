@@ -12,8 +12,9 @@ import ProfileURL from 'routes/URLs/ProfileURL';
 import SocialNetworkURL from 'routes/URLs/SocialNetworkURL';
 import Texts from 'config/Texts';
 import List from 'components/List';
-import { HomeIcon, UserIcon, BagIcon, CourseIcon, MediaIcon, SocialNetworkIcon, LogoutIcon, UsersIcon } from 'components/Icons';
+import { HomeIcon, UserIcon, BagIcon, CourseIcon, MediaIcon, SocialNetworkIcon, LogoutIcon, UsersIcon, EmailIcon } from 'components/Icons';
 import StudentsURL from 'routes/URLs/StudentsURL';
+import EmailsURL from 'routes/URLs/EmailsURL';
 
 export function Menu({ ...props }) {
     const [image, setImage] = useState(null);
@@ -68,6 +69,13 @@ export function Menu({ ...props }) {
             isNavLink: true,
             to: CoursesURL().REDIRECT.BASE,
             icon : CourseIcon,
+        },
+        {
+            text: TEXTS.BUTTON_EMAIL,
+            exact: false,
+            isNavLink: true,
+            to: EmailsURL().REDIRECT.BASE,
+            icon : EmailIcon,
         },
         {
             text: TEXTS.BUTTON_MEDIA,
