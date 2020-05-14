@@ -436,6 +436,8 @@ export const TextPortuguese = {
     FORM_ADD_COURSE_VIDEO: {
         VIDEO: 'Vídeo',
         THUMBNAIL: 'Miniatura',
+        LINK: 'Link privado do video no VIMEO',
+        EXAMPLE_LINK: 'https://vimeo.com/417341569/6a208b913a',
         NAME: 'Título do video',
         DESCRIPTION: 'Descrição',
         BUTTON_VIDEO: 'Escolha o video',
@@ -501,6 +503,8 @@ export const TextPortuguese = {
     FORM_UPDATE_COURSE_VIDEO: {
         VIDEO: 'Vídeo',
         THUMBNAIL: 'Miniatura',
+        LINK: 'Link privado do video no VIMEO',
+        EXAMPLE_LINK: 'https://vimeo.com/417341569/6a208b913a',
         NAME: 'Título do video',
         NOT_FOUND_TITLE: 'Desculpe, não encontrei o que você queria.',
         DESCRIPTION: 'Descrição',

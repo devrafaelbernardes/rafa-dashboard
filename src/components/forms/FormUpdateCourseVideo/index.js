@@ -34,6 +34,7 @@ export function FormUpdateCourseVideo({ courseId, videoId, ...props }) {
     const [video, setVideo] = useState(null);
     const [thumbnail, setThumbnail] = useState(null);
     const [thumbnailPreview, setThumbnailPreview] = useState(null);
+    const [link, setLink] = useState(null);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [result, setResult] = useState("");
@@ -48,9 +49,11 @@ export function FormUpdateCourseVideo({ courseId, videoId, ...props }) {
         (async () => {
             if (dataGetVideo && dataGetVideo.response) {
                 const video = dataGetVideo.response;
+                const videoURL = video[COURSE_VIDEO.VIDEO] && video[COURSE_VIDEO.VIDEO][VIDEO.URL];
                 await setNotFound(false);
                 await setName(video[COURSE_VIDEO.NAME]);
-                await setVideo(video[COURSE_VIDEO.VIDEO] && video[COURSE_VIDEO.VIDEO][VIDEO.URL]);
+                await setLink(videoURL);
+                await setVideo(videoURL);
                 await setThumbnailPreview(getImageUser(video[COURSE_VIDEO.THUMBNAIL]));
                 try {
                     const descriptionParse = await toHTML(video[COURSE_VIDEO.DESCRIPTION], false);
@@ -97,7 +100,7 @@ export function FormUpdateCourseVideo({ courseId, videoId, ...props }) {
     const update = async () => {
         let OKEY = false;
         try {
-            await submit(objectMutation({ courseId, videoId, name, description }, { thumbnail }))
+            await submit(objectMutation({ courseId, videoId, name, description, link }, { thumbnail }))
                 .then(async (response) => {
                     if (response && response.data && response.data.response) {
                         OKEY = true;
@@ -160,6 +163,16 @@ export function FormUpdateCourseVideo({ courseId, videoId, ...props }) {
                                         </CourseThumbnailPreview>
                                     </Line>
                                 }
+                                <Line>
+                                    <Input
+                                        required
+                                        name={"link"}
+                                        value={link}
+                                        label={TEXTS.LINK}
+                                        placeholder={TEXTS.EXAMPLE_LINK}
+                                        onChange={e => setLink(String(e.target.value))}
+                                    />
+                                </Line>
                                 <Line>
                                     <Input
                                         required
