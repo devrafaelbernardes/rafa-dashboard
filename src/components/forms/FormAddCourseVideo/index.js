@@ -2,7 +2,22 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { ThemeContext } from 'styled-components';
 
-import { Container, Line, Button, BoxResult, CourseVideoPreviewCard, Title, CourseVideoPreviewGeneral, CourseThumbnailPreview, CancelButton, CourseVideoPreview, CourseVideoPreviewContainer, ContainerButtonResult, ContainerResult, ContainerInputFile } from './styles';
+import {
+    Container,
+    Line,
+    Button,
+    BoxResult,
+    CourseVideoPreviewCard,
+    Title,
+    CourseVideoPreviewGeneral,
+    CourseThumbnailPreview,
+    CancelButton,
+    //CourseVideoPreview,
+    CourseVideoPreviewContainer,
+    ContainerButtonResult,
+    ContainerResult,
+    ContainerInputFile
+} from './styles';
 
 import Form from 'components/forms/Form';
 import Video from 'components/Video';
@@ -17,8 +32,9 @@ import TextEditor from 'components/TextEditor';
 export function FormAddCourseVideo({ courseId, ...props }) {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
+    const [link, setLink] = useState(null);
     const [video, setVideo] = useState(null);
-    const [videoPreview, setVideoPreview] = useState(null);
+    const [/* videoPreview */, setVideoPreview] = useState(null);
     const [thumbnail, setThumbnail] = useState(null);
     const [thumbnailPreview, setThumbnailPreview] = useState(null);
     const [result, setResult] = useState("");
@@ -42,7 +58,7 @@ export function FormAddCourseVideo({ courseId, ...props }) {
         }
     }, [result]);
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (video) {
             try {
                 setVideoPreview(URL.createObjectURL(video));
@@ -50,7 +66,7 @@ export function FormAddCourseVideo({ courseId, ...props }) {
         } else {
             setVideoPreview(null);
         }
-    }, [video]);
+    }, [video]); */
 
     useEffect(() => {
         if (thumbnail) {
@@ -72,7 +88,7 @@ export function FormAddCourseVideo({ courseId, ...props }) {
         setName("");
         setDescription("");
         setVideo(null);
-        setVideoPreview(null);
+        //setVideoPreview(null);
         setThumbnail(null);
         setThumbnailPreview(null);
         setResult("");
@@ -81,7 +97,7 @@ export function FormAddCourseVideo({ courseId, ...props }) {
     const upload = async () => {
         let OKEY = false;
         try {
-            await submit(objectMutation({ courseId, name, description }, { video, thumbnail }))
+            await submit(objectMutation({ courseId, name, description, link }, { video, thumbnail }))
                 .then(response => {
                     if (response && response.data && response.data.response) {
                         const courseVideo = response.data.response;
@@ -103,7 +119,7 @@ export function FormAddCourseVideo({ courseId, ...props }) {
             >
                 <CourseVideoPreviewContainer>
                     <CourseVideoPreviewGeneral>
-                        {
+                        {/* {
                             (result !== true) &&
                             <CourseVideoPreview>
                                 <CourseVideoPreviewCard>
@@ -124,7 +140,7 @@ export function FormAddCourseVideo({ courseId, ...props }) {
                                     </ContainerInputFile>
                                 </CourseVideoPreviewCard>
                             </CourseVideoPreview>
-                        }
+                        } */}
                         <CourseThumbnailPreview>
                             <CourseVideoPreviewCard>
                                 {
@@ -170,6 +186,16 @@ export function FormAddCourseVideo({ courseId, ...props }) {
                 {
                     (result !== true) &&
                     <>
+                        <Line>
+                            <Input
+                                required
+                                name={"link"}
+                                value={link}
+                                label={TEXTS.LINK}
+                                placeholder={TEXTS.EXAMPLE_LINK}
+                                onChange={e => setLink(String(e.target.value))}
+                            />
+                        </Line>
                         <Line>
                             <Input
                                 required

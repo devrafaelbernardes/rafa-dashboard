@@ -49,11 +49,11 @@ export const CourseThumbnailPreview = styled(Col).attrs({
     lg : 6,
 })`
     padding: 0;
-    padding-left: 15px;
+    /* padding-left: 15px; */
 
     @media screen and (max-width:${({ theme }) => theme.sizes.sm }){
         padding-left: 0;
-        padding-top: 15px;
+        /* padding-top: 15px; */
     }
 `;
 
