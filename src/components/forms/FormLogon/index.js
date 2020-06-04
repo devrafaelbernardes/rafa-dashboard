@@ -16,34 +16,9 @@ export function FormLogon({ children, ...props }) {
     const [result, setResult] = useState("");
     const { colors } = useContext(ThemeContext);
     const { doLogin } = useContext(ContextApp);
-    const [login, { data, loading, error }] = useMutation(DO_LOGIN, objectMutation({
-        email,
-        password
-    }));
+    const [login, { loading }] = useMutation(DO_LOGIN);
 
     const TEXTS = Texts.FORM_LOGON;
-
-    useEffect(() => {
-        let MOUNTED = true;
-        (async () => {
-            if (error && MOUNTED) {
-                setResult(false);
-            } else if (data) {
-                if (data.response && MOUNTED) {
-                    setResult(true);
-                    const token = data.response;
-                    if (doLogin) {
-                        await doLogin(token);
-                    }
-                } else {
-                    setResult(false);
-                }
-            }
-        })()
-        return () => {
-            MOUNTED = false;
-        }
-    }, [data, error, doLogin]);
 
     useEffect(() => {
         if (result !== "") {
@@ -61,13 +36,37 @@ export function FormLogon({ children, ...props }) {
         }
     }, [result]);
 
+    const makeLogin = async () => {
+        let OKEY = false;
+        try {
+            await login(objectMutation({
+                email,
+                password
+            }))
+                .then(async (response) => {
+                    if (response && response.data && response.data.response) {
+                        OKEY = true;
+                        const token = response.data.response;
+                        if (doLogin) {
+                            await doLogin(token);
+                        }
+                        return;
+                    }
+                })
+        } catch (error) { }
+
+        if (!OKEY) {
+            setResult(OKEY);
+        }
+    }
+
     return (
         <Container {...props}>
             <Form
                 title={
                     <Title>{TEXTS.TITLE}</Title>
                 }
-                onSubmit={() => login()}
+                onSubmit={() => makeLogin()}
             >
                 <Line>
                     <Input
