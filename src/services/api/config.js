@@ -13,6 +13,7 @@ const LINK_API_SERVER = isDevelopment ? `${window.location.hostname}:${PORT}/` :
 export const BASE_API = `http${!isDevelopment ? 's' : ''}://${LINK_API_SERVER}`;
 export const URL_BASE_API = `${BASE_API}`;
 
+export const LINK_UPLOAD_IMAGE_API = `${URL_BASE_API}upload/?token=${getToken()}`;
 
 const wsLink = new WebSocketLink({
 	uri: `ws${!isDevelopment ? 's' : ''}://${LINK_API_SERVER}`,
