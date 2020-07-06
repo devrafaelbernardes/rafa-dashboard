@@ -143,6 +143,7 @@ export const CREATE_COURSE = gql`
         response : createCourse(input : $input, image : $image){
             ${COURSE.ID}
             ${COURSE.NAME}
+            ${COURSE.MONTHS_TO_EXPIRES}
             ${COURSE.PROFILE_IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}
@@ -212,6 +213,7 @@ export const UPDATE_COURSE = gql`
             ${COURSE.NAME}
             ${COURSE.DESCRIPTION}
             ${COURSE.PURCHASE_LINK}
+            ${COURSE.MONTHS_TO_EXPIRES}
             ${COURSE.COUNT_STUDENTS}
             ${COURSE.COUNT_VIDEOS}
             ${COURSE.PROFILE_IMAGE}{

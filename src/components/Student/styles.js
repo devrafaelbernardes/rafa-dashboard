@@ -57,16 +57,6 @@ export const ValidatedContainer = styled(Row)`
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-family: ${({ theme }) => theme.fonts.small};
-    font-size: ${({ theme }) => theme.sizes.fonts.normal};
-    font-weight: bold;
-
-    & > span{
-        padding: 4px 14px;
-        color: ${({ theme }) => theme.colors.white};
-        background:${({ color }) => color || 'transparent'};
-        border-radius: ${({ theme }) => theme.sizes.border_radius};
-    }
 `;
 
 export const Body = styled(Row)``;

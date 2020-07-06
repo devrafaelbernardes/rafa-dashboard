@@ -48,6 +48,7 @@ export const COURSE = {
     NAME : 'name',
     DESCRIPTION : 'description',
     PURCHASE_LINK : 'purchase_link',
+    MONTHS_TO_EXPIRES : 'months_to_expires',
     INSTRUCTOR : 'instructor',
     PROFILE_IMAGE : 'profile_image',
     IS_ACTIVE : 'is_active',
@@ -95,6 +96,7 @@ export const COURSE_PREVIEW = {
 export const COURSE_STUDENT = {
     ID : 'id',
     STUDENT : 'student',
+    EXPIRES_AT : 'expires_at',
     IS_ACTIVE : 'is_active',
     CREATED_AT : 'created_at',
 };

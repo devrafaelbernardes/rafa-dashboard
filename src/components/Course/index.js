@@ -1,10 +1,16 @@
-import React from 'react';
-
 import NoImageSRC from 'assets/images/no-thumbnail.png';
+import React, { useMemo } from 'react';
+import { Body, Container, Expiration, Header, Image, Title } from './styles';
+import Texts from 'config/Texts';
+import { toDateExpiration } from 'utils/convertValue';
 
-import { Container, Image, Title, Header, Body/* , Description */ } from './styles';
+export function Course({ image = null, title = null, description = null, expiration = null, link = "", componentHeader, componentBody, ...props }) {
+    const TEXTS = Texts.COURSE;
 
-export function Course({ image = null, title = null, description = null, link = "", componentHeader, componentBody, ...props }) {
+    const textExpiration = useMemo(() => {
+        return toDateExpiration(expiration);
+    }, [expiration]);
+
     return (
         <Container
             {...props}
@@ -21,10 +27,10 @@ export function Course({ image = null, title = null, description = null, link = 
                     title &&
                     <Title>{title}</Title>
                 }
-                {
-                    //description &&
-                    //<Description>{description}</Description>
-                }
+                <Expiration>
+                    <p>{TEXTS.EXPIRATION_TITLE}</p>
+                    <span>{textExpiration}</span>
+                </Expiration>
             </Body>
         </Container>
     );

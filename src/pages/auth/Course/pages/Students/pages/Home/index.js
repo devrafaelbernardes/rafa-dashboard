@@ -119,6 +119,7 @@ export function Home() {
                         renderItem={(item, key) => {
                             const courseId = id;
                             const date = item[COURSE_STUDENT.CREATED_AT];
+                            const expiresAt = item[COURSE_STUDENT.EXPIRES_AT];
                             const student = item[COURSE_STUDENT.STUDENT];
                             let name = null;
                             let email = null;
@@ -142,6 +143,7 @@ export function Home() {
                                             subtitle={email}
                                             image={image}
                                             date={date}
+                                            expiresAt={expiresAt}
                                             isValidated={studentValidated}
                                             onRemove={() => remove(objectMutation({ courseId, studentId }))}
                                         />
