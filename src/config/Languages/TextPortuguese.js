@@ -18,8 +18,10 @@ export const TextPortuguese = {
     STUDENT: {
         COURSES: 'Cursos',
         COURSE: 'Curso',
-        VALIDATED: 'Cadastro válido',
-        INVALIDATE: 'Validação pendente',
+    },
+    STUDENT_EMAIL_STATUS: {
+        VALIDATED: 'Válido',
+        INVALIDATE: 'Pendente',
     },
     EMAIL: {
         NAME: 'Nome do usuário',
@@ -65,6 +67,17 @@ export const TextPortuguese = {
     },
     LIST: {
         NOT_FOUND: 'Me desculpa, não encontrei ninguém.',
+    },
+    DATE_EXPIRATION: {
+        UNLIMITED: 'Tempo indeterminado',
+        AND: 'e',
+        ONE_MONTH: 'mês',
+        MANY_MONTHS: 'meses',
+        ONE_YEAR: 'ano',
+        MANY_YEARS: 'anos',
+    },
+    COURSE: {
+        EXPIRATION_TITLE: 'Tempo de curso:',
     },
     PAGE_AUTH_HOME: {
         HOME: {
@@ -123,6 +136,8 @@ export const TextPortuguese = {
             TITLE: 'Quantidade de alunos:',
             ADD_STUDENT: 'Adicionar aluno',
             ADDED: 'Adicionado no dia:',
+            EXPIRES: 'Expirará no dia:',
+            UNLIMITED: 'Ilimitado',
             LOAD_MORE: 'Ver mais',
             BUTTON_REMOVE_CANCEL: 'Cancelar',
             BUTTON_REMOVE_CONFIRM: 'Confirmar remoção',
@@ -426,6 +441,7 @@ export const TextPortuguese = {
         NAME: 'Nome do curso',
         DESCRIPTION: 'Descrição',
         PURCHASE_LINK: 'Link de compra do curso',
+        MONTHS_TO_EXPIRES: 'Validade do curso (em meses)',
         BUTTON_IMAGE: 'Escolha uma foto de capa',
         BUTTON_SUBMIT: 'Adicionar',
         BUTTON_CANCEL: 'Cancelar',
@@ -485,6 +501,7 @@ export const TextPortuguese = {
         NAME: 'Nome do curso',
         DESCRIPTION: 'Descrição',
         PURCHASE_LINK: 'Link de compra',
+        MONTHS_TO_EXPIRES: 'Validade do curso (em meses)',
         BUTTON_IMAGE: 'Escolher foto de perfil',
         BUTTON_SUBMIT: 'Atualizar',
         BUTTON_CANCEL: 'Cancelar',

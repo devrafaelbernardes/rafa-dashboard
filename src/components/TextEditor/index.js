@@ -26,6 +26,22 @@ export function TextEditor({ children, data, className, label, message, required
                 data={value}
                 editor={ClassicEditor}
                 config={{
+                    allowedContent: true,
+                    extraAllowedContent: '*{*}',
+                    image: {
+                        toolbar: ['imageTextAlternative', '|', 'imageStyle:alignLeft', 'imageStyle:full', 'imageStyle:alignRight'],
+
+                        styles: [
+                            // This option is equal to a situation where no style is applied.
+                            'full',
+
+                            // This represents an image aligned to the left.
+                            'alignLeft',
+
+                            // This represents an image aligned to the right.
+                            'alignRight'
+                        ]
+                    },
                     ckfinder: {
                         options: {
                             resourceType: 'Images'

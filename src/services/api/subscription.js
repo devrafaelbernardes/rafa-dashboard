@@ -53,6 +53,7 @@ export const COURSE_STUDENT_ADDED = gql`
         response : courseStudentAdded(courseId:$courseId){
             ${COURSE_STUDENT.ID}
             ${COURSE_STUDENT.CREATED_AT}
+            ${COURSE_STUDENT.EXPIRES_AT}
             ${COURSE_STUDENT.STUDENT}{
                 ${STUDENT.ID}
                 ${STUDENT.FULL_NAME}

@@ -21,6 +21,7 @@ export function FormUpdateCourse({ courseId, ...props }) {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [purchaseLink, setPurchaseLink] = useState("");
+    const [monthsToExpires, setMonthsToExpires] = useState(null);
     const [image, setImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [result, setResult] = useState("");
@@ -28,7 +29,7 @@ export function FormUpdateCourse({ courseId, ...props }) {
     const TEXTS = Texts.FORM_UPDATE_COURSE;
 
     let { data: dataGetCourse, loading: loadingGetCourse } = useQuery(GET_COURSE, objectQuery({ id: courseId }));
-    const [submit, { data, error, loading }] = useMutation(UPDATE_COURSE, objectMutation({ courseId, name, description, purchaseLink }, { image }));
+    let [submit, { data, error, loading }] = useMutation(UPDATE_COURSE, objectMutation({ courseId, name, description, purchaseLink, monthsToExpires }, { image }));
 
     useEffect(() => {
         if (image) {
@@ -46,6 +47,7 @@ export function FormUpdateCourse({ courseId, ...props }) {
                 const course = dataGetCourse.response;
                 setName(course[COURSE.NAME]);
                 setPurchaseLink(course[COURSE.PURCHASE_LINK]);
+                setMonthsToExpires(course[COURSE.MONTHS_TO_EXPIRES]);
                 setImagePreview(course[COURSE.PROFILE_IMAGE] && course[COURSE.PROFILE_IMAGE][IMAGE.URL]);
                 try {
                     const descriptionParse = await toHTML(course[COURSE.DESCRIPTION], false);
@@ -64,6 +66,7 @@ export function FormUpdateCourse({ courseId, ...props }) {
                 if (data.response && MOUNTED) {
                     const course = data.response;
                     setName(course[COURSE.NAME]);
+                    setMonthsToExpires(course[COURSE.MONTHS_TO_EXPIRES]);
                     setImagePreview(course[COURSE.PROFILE_IMAGE] && course[COURSE.PROFILE_IMAGE][IMAGE.URL]);
                     setResult(true);
                 } else {
@@ -139,6 +142,16 @@ export function FormUpdateCourse({ courseId, ...props }) {
                             label={TEXTS.PURCHASE_LINK}
                             placeholder={TEXTS.PURCHASE_LINK}
                             onChange={e => setPurchaseLink(String(e.target.value))}
+                        />
+                    </Line>
+                    <Line>
+                        <Input
+                            name={"monthsToExpires"}
+                            value={monthsToExpires}
+                            label={TEXTS.MONTHS_TO_EXPIRES}
+                            placeholder={TEXTS.MONTHS_TO_EXPIRES}
+                            type="number"
+                            onChange={e => setMonthsToExpires(parseInt(e.target.value))}
                         />
                     </Line>
                     <Line>

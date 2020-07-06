@@ -82,32 +82,6 @@ export function Home() {
         })
     ));
 
-    /* const loadMore = useCallback(() => {
-        try {
-            subscribeToMore({
-                document: COURSE_ADDED,
-                updateQuery: (prev, { subscriptionData }) => {
-                    if (!subscriptionData && !subscriptionData.response) {
-                        return prev;
-                    }
-                    const newData = subscriptionData.data.response;
-                    const prevData = prev.response[PAGINATION.ITEMS];
-                    return Object.assign({}, prev, {
-                        response: {
-                            ...prev.response,
-                            [PAGINATION.ITEMS]: [newData, ...prevData],
-                        }
-                    });
-                }
-            });
-        } catch (error) { }
-    }, [subscribeToMore, courses]);
-
-    useEffect(() => {
-        loadMore();
-    }, [loadMore]);
-
- */
     const setItems = useCallback((data, more = false) => {
         if (data && data.response && data.response[PAGINATION.ITEMS] && data.response[PAGINATION.ITEMS].length > 0) {
             const items = data.response[PAGINATION.ITEMS];
@@ -193,6 +167,7 @@ export function Home() {
                                     id={item[COURSE.ID]}
                                     title={item[COURSE.NAME]}
                                     description={item[COURSE.DESCRIPTION]}
+                                    expiration={item[COURSE.MONTHS_TO_EXPIRES]}
                                     image={item[COURSE.PROFILE_IMAGE] && item[COURSE.PROFILE_IMAGE][IMAGE.URL]}
                                     loading={loadingRemove}
                                     data={dataRemove}

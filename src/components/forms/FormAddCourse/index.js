@@ -22,13 +22,14 @@ export function FormAddCourse({ ...props }) {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [purchaseLink, setPurchaseLink] = useState("");
+    const [monthsToExpires, setMonthsToExpires] = useState(null);
     const [image, setImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     const [result, setResult] = useState("");
     const { colors } = useContext(ThemeContext);
     const TEXTS = Texts.FORM_ADD_COURSE;
 
-    const [submit, { data, error, loading }] = useMutation(CREATE_COURSE, objectMutation({ purchaseLink, name, description }, { image }));
+    const [submit, { data, error, loading }] = useMutation(CREATE_COURSE, objectMutation({ purchaseLink, name, description, monthsToExpires }, { image }));
 
     useEffect(() => {
         let MOUNTED = true;
@@ -89,6 +90,7 @@ export function FormAddCourse({ ...props }) {
         setName("");
         setDescription("");
         setPurchaseLink("");
+        setMonthsToExpires("");
         setImage(null);
         setImagePreview(null);
         setResult("");
@@ -104,6 +106,7 @@ export function FormAddCourse({ ...props }) {
                         <Course
                             title={name}
                             image={imagePreview}
+                            expiration={monthsToExpires}
                         />
                         {
                             (result === true) &&
@@ -158,6 +161,16 @@ export function FormAddCourse({ ...props }) {
                                 label={TEXTS.PURCHASE_LINK}
                                 placeholder={TEXTS.PURCHASE_LINK}
                                 onChange={e => setPurchaseLink(String(e.target.value))}
+                            />
+                        </Line>
+                        <Line>
+                            <Input
+                                name={"monthsToExpires"}
+                                value={monthsToExpires}
+                                label={TEXTS.MONTHS_TO_EXPIRES}
+                                placeholder={TEXTS.MONTHS_TO_EXPIRES}
+                                type="number"
+                                onChange={e => setMonthsToExpires(parseInt(e.target.value))}
                             />
                         </Line>
                         <Line>

@@ -92,7 +92,7 @@ export const GET_COURSES = gql`
             ${PAGINATION.ITEMS} {
                 ${COURSE.ID}
                 ${COURSE.NAME}
-                ${COURSE.DESCRIPTION}
+                ${COURSE.MONTHS_TO_EXPIRES}
                 ${COURSE.PURCHASE_LINK}
                 ${COURSE.PROFILE_IMAGE}{
                     ${IMAGE.ID}
@@ -264,6 +264,7 @@ export const GET_COURSE = gql`
             ${COURSE.NAME}
             ${COURSE.DESCRIPTION}
             ${COURSE.PURCHASE_LINK}
+            ${COURSE.MONTHS_TO_EXPIRES}
             ${COURSE.COUNT_STUDENTS}
             ${COURSE.COUNT_VIDEOS}
             ${COURSE.PROFILE_IMAGE}{
@@ -282,6 +283,7 @@ export const GET_COURSE_STUDENTS = gql`
                 ${PAGINATION.TOTAL_ITEMS}
                 ${PAGINATION.ITEMS}{
                     ${COURSE_STUDENT.ID}
+                    ${COURSE_STUDENT.EXPIRES_AT}
                     ${COURSE_STUDENT.CREATED_AT}
                     ${COURSE_STUDENT.STUDENT}{
                         ${STUDENT.ID}
