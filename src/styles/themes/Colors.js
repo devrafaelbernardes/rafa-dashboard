@@ -19,6 +19,7 @@ export const Colors = {
     brown: '#964b00',
     brown_dark: '#5e3724',
     red: '#dc3030',
+    red_dark: '#941919',
     purple: '#7f19ab',
     orange: '#f37125',
 };

@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useContext } from 'react';
 
 import {
     Container,
@@ -20,9 +20,11 @@ import Texts from 'config/Texts';
 import { RemoveIcon } from 'components/Icons';
 import RemoveContainer from 'components/RemoveContainer';
 import Avatar from 'components/Avatar';
+import { ThemeContext } from 'styled-components';
 
 export const Item = memo(({ id, title, subtitle, expiresAt, image, date, onRemove, isValidated, ...props }) => {
     const [tryRemove, setTryRemove] = useState(false);
+    const { colors } = useContext(ThemeContext);
 
     const TEXTS = Texts.PAGE_AUTH_COURSE.STUDENTS;
 
@@ -72,6 +74,7 @@ export const Item = memo(({ id, title, subtitle, expiresAt, image, date, onRemov
                 </Body>
                 <Footer>
                     <ButtonRemove
+                        color={colors.red}
                         onClick={() => setTryRemove(true)}
                     >
                         <RemoveIcon /> {TEXTS.BUTTON_REMOVE}

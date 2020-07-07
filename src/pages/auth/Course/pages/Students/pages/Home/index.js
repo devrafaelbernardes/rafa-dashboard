@@ -7,7 +7,7 @@ import Texts from 'config/Texts';
 import { PlusIcon } from 'components/Icons';
 import objectQuery, { GET_COURSE_STUDENTS, getImageUser } from 'services/api/query';
 import ComponentLoading from 'components/ComponentLoading';
-import { PAGINATION, COURSE_STUDENT, STUDENT, PAGE_INFO, COURSE } from 'services/api/responseAPI';
+import { PAGINATION, COURSE_STUDENT, STUDENT, PAGE_INFO } from 'services/api/responseAPI';
 import ContextCourse from 'context/ContextCourse';
 import List from 'components/List';
 import objectMutation, { REMOVE_COURSE_STUDENT } from 'services/api/mutation';
@@ -18,7 +18,10 @@ import CourseURL from 'routes/URLs/CourseURL';
 export function Home() {
     const INITIAL_PAGE = 1;
     const ITEMS_PER_PAGE = 15;
-    const orderBy = [{ column: COURSE_STUDENT.CREATED_AT, order: 'desc' }];
+    const orderBy = [{
+        column: `student.${STUDENT.NAME}`,
+        order: 'asc'
+    }];
 
     const [hasNextPage, setHasNextPage] = useState(false);
     const [pageNumber, setPageNumber] = useState(INITIAL_PAGE);
@@ -39,10 +42,10 @@ export function Home() {
     const TEXTS = Texts.PAGE_AUTH_COURSE.STUDENTS;
 
     const setItems = useCallback((data, more = false) => {
-        if (data && data.response && data.response[COURSE.STUDENTS] && data.response[COURSE.STUDENTS][PAGINATION.ITEMS] && data.response[COURSE.STUDENTS][PAGINATION.ITEMS].length > 0) {
-            const items = data.response[COURSE.STUDENTS][PAGINATION.ITEMS];
-            const pageInfo = data.response[COURSE.STUDENTS][PAGINATION.PAGE_INFO];
-            setTotalStudents(data.response[COURSE.STUDENTS][PAGINATION.TOTAL_ITEMS]);
+        if (data && data.response && data.response[PAGINATION.ITEMS] && data.response[PAGINATION.ITEMS].length > 0) {
+            const items = data.response[PAGINATION.ITEMS];
+            const pageInfo = data.response[PAGINATION.PAGE_INFO];
+            setTotalStudents(data.response[PAGINATION.TOTAL_ITEMS]);
             setStudents(prev => more ? [...prev, ...items] : items);
             if (pageInfo) {
                 setHasNextPage(pageInfo[PAGE_INFO.HAS_NEXT_PAGE] === true);
