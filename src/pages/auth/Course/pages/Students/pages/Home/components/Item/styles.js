@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Row } from 'react-bootstrap';
-import { ButtonContained } from 'components/Button';
+import { ButtonClean } from 'components/Button';
 
 export const Container = styled(Row)`
     padding: 0;
@@ -69,7 +69,14 @@ export const Footer = styled(Row)`
     align-items: center;
 `;
 
-export const ButtonRemove = styled(ButtonContained)`
+export const ButtonRemove = styled(ButtonClean)`
+    padding: 0 !important;
+    background: transparent !important;
+
+    &:hover{
+        color: ${({ theme }) => theme.colors.red_dark} !important;
+    }
+
     & > *{
         margin-right: 10px;
     }

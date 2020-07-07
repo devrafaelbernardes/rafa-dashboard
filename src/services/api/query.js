@@ -277,29 +277,26 @@ export const GET_COURSE = gql`
 
 export const GET_COURSE_STUDENTS = gql`
     query QueryGetCourseStudents($id : ID, $pagination : InputPagination, $orderBy : [InputOrderQuery!]){
-        response : course(id : $id){
-            ${COURSE.ID}
-            ${COURSE.STUDENTS}(pagination : $pagination, orderBy : $orderBy){
-                ${PAGINATION.TOTAL_ITEMS}
-                ${PAGINATION.ITEMS}{
-                    ${COURSE_STUDENT.ID}
-                    ${COURSE_STUDENT.EXPIRES_AT}
-                    ${COURSE_STUDENT.CREATED_AT}
-                    ${COURSE_STUDENT.STUDENT}{
-                        ${STUDENT.ID}
-                        ${STUDENT.FULL_NAME}
-                        ${STUDENT.EMAIL}
-                        ${STUDENT.IS_VALIDATED_EMAIL}
-                        ${STUDENT.PROFILE_IMAGE} {
-                            ${IMAGE.ID}
-                            ${IMAGE.URL}
-                        }
+        response : course_students(courseId : $id, pagination : $pagination, orderBy : $orderBy){
+            ${PAGINATION.TOTAL_ITEMS}
+            ${PAGINATION.ITEMS}{
+                ${COURSE_STUDENT.ID}
+                ${COURSE_STUDENT.EXPIRES_AT}
+                ${COURSE_STUDENT.CREATED_AT}
+                ${COURSE_STUDENT.STUDENT}{
+                    ${STUDENT.ID}
+                    ${STUDENT.FULL_NAME}
+                    ${STUDENT.EMAIL}
+                    ${STUDENT.IS_VALIDATED_EMAIL}
+                    ${STUDENT.PROFILE_IMAGE} {
+                        ${IMAGE.ID}
+                        ${IMAGE.URL}
                     }
                 }
-                ${PAGINATION.PAGE_INFO} {
-                    ${PAGE_INFO.HAS_PREVIOUS_PAGE}
-                    ${PAGE_INFO.HAS_NEXT_PAGE}
-                }
+            }
+            ${PAGINATION.PAGE_INFO} {
+                ${PAGE_INFO.HAS_PREVIOUS_PAGE}
+                ${PAGE_INFO.HAS_NEXT_PAGE}
             }
         }
     }
