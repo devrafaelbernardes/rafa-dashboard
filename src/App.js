@@ -7,7 +7,7 @@ import { CookiesProvider } from 'react-cookie';
 import ContentApp from 'ContentApp';
 import Theme from 'styles/themes/Theme';
 import { client } from 'services/api/config';
-// Novo app
+
 function App() {
 	return (
 		<ApolloProvider client={client}>
