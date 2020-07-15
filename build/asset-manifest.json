@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.de424728.chunk.css",
+    "main.js": "/static/js/main.7b72698b.chunk.js",
+    "main.js.map": "/static/js/main.7b72698b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.dd85382f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.dd85382f.js.map",
+    "static/js/2.ced40059.chunk.js": "/static/js/2.ced40059.chunk.js",
+    "static/js/2.ced40059.chunk.js.map": "/static/js/2.ced40059.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.1111467334c76ed66dad7ec782ae1f80.js": "/precache-manifest.1111467334c76ed66dad7ec782ae1f80.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.de424728.chunk.css.map": "/static/css/main.de424728.chunk.css.map",
+    "static/js/2.ced40059.chunk.js.LICENSE.txt": "/static/js/2.ced40059.chunk.js.LICENSE.txt",
+    "static/media/Another_Flight.otf": "/static/media/Another_Flight.b2102722.otf",
+    "static/media/logo.png": "/static/media/logo.50696249.png",
+    "static/media/no-image.png": "/static/media/no-image.f98b32ce.png",
+    "static/media/no-thumbnail.png": "/static/media/no-thumbnail.b0dc278f.png",
+    "static/media/secondImage.png": "/static/media/secondImage.5481a621.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dd85382f.js",
+    "static/js/2.ced40059.chunk.js",
+    "static/css/main.de424728.chunk.css",
+    "static/js/main.7b72698b.chunk.js"
+  ]
+}
