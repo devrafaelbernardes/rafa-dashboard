@@ -78,7 +78,7 @@ export function Home() {
         objectPagination({
             pageSize: ITEMS_PER_PAGE,
             pageNumber: 1,
-            orderBy: [{ column: COURSE.ID, order: "asc" }],
+            orderBy: [{ column: COURSE.NAME, order: "asc" }],
         })
     ));
 
@@ -103,7 +103,7 @@ export function Home() {
                     objectPagination({
                         pageSize: ITEMS_PER_PAGE,
                         pageNumber: page,
-                        orderBy: [{ column: COURSE.ID, order: "asc" }],
+                        orderBy: [{ column: COURSE.NAME, order: "asc" }],
                     })
                 ),
                 updateQuery: (prev, { fetchMoreResult }) => {
