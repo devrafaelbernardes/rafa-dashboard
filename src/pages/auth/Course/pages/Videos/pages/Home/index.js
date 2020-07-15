@@ -30,7 +30,7 @@ export function Home() {
     let { data, loading } = useQuery(GET_COURSE_VIDEOS, objectQuery({
         id: courseId,
         ...objectPagination({
-            orderBy: [{ column: COURSE_VIDEO.NAME }]
+            orderBy: [{ column: COURSE_VIDEO.ID }]
         })
     }));
     let [remove, { data: dataRemove }] = useMutation(REMOVE_COURSE_VIDEO);
