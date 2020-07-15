@@ -8,6 +8,7 @@ import ContentApp from 'ContentApp';
 import Theme from 'styles/themes/Theme';
 import { client } from 'services/api/config';
 
+// agr
 function App() {
 	return (
 		<ApolloProvider client={client}>
