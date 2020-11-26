@@ -13,7 +13,6 @@ export const TryRemoveContainer = styled(Row)`
     background: rgba(255,255,255,.9);
     align-items:center;
     justify-content: center;
-    flex-direction: column;
     z-index: 5;
 `;
 

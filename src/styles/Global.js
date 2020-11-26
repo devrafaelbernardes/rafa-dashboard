@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import AnotherFlight from 'assets/fonts/AnotherFlight/Another_Flight.otf';
+import neotericFont from 'assets/fonts/neoteric/NEOTERIC.ttf'
 
 export const Global = createGlobalStyle`
     *{
@@ -108,8 +109,7 @@ export const Global = createGlobalStyle`
 
     @font-face {
         font-family: NEOTERIC;
-        src: url("//db.onlinewebfonts.com/t/b359a7e2080fb171a4befe467e647482.eot");
-        src: url("//db.onlinewebfonts.com/t/b359a7e2080fb171a4befe467e647482.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/b359a7e2080fb171a4befe467e647482.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/b359a7e2080fb171a4befe467e647482.woff") format("woff"), url("//db.onlinewebfonts.com/t/b359a7e2080fb171a4befe467e647482.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/b359a7e2080fb171a4befe467e647482.svg#NEOTERIC") format("svg");
+        src: url(${neotericFont});
     }
 
     @font-face {
