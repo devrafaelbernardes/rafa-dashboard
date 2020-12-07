@@ -9,6 +9,7 @@ import EmailsURL from 'routes/URLs/EmailsURL';
 import HomeURL from 'routes/URLs/HomeURL';
 import LogonURL from 'routes/URLs/LogonURL';
 import MediaURL from 'routes/URLs/MediaURL';
+import ModelingURL from 'routes/URLs/ModelingURL';
 import ProfileURL from 'routes/URLs/ProfileURL';
 import StudentsURL from 'routes/URLs/StudentsURL';
 import SocialNetworkURL from 'routes/URLs/SocialNetworkURL';
@@ -23,6 +24,7 @@ import Courses from 'pages/auth/Courses';
 import Emails from 'pages/auth/Emails';
 import HomeAuth from 'pages/auth/Home';
 import Media from 'pages/auth/Media';
+import Modeling from 'pages/auth/Modeling';
 import Profile from 'pages/auth/Profile';
 import Students from 'pages/auth/Students';
 import SocialNetwork from 'pages/auth/SocialNetwork';
@@ -74,6 +76,11 @@ export function RouterApp() {
             <ProtectedRoute
                 path={MediaURL().ROUTER.BASE}
                 componentAuthenticated={Media}
+                redirectNotAuthenticatedURL={DESCONNECTED_LINK}
+            />
+            <ProtectedRoute
+                path={ModelingURL().ROUTER.BASE}
+                componentAuthenticated={Modeling}
                 redirectNotAuthenticatedURL={DESCONNECTED_LINK}
             />
             <ProtectedRoute

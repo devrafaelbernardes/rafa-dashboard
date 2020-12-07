@@ -1,6 +1,6 @@
+import { faEdit, faEnvelope, faEye, faEyeSlash, faFileAlt, faFilePdf, faGraduationCap, faHome, faLock, faPhotoVideo, faPlus, faProjectDiagram, faShoppingBag, faSignOutAlt, faSpinner, faTimes, faTrashAlt, faUser, faUserGraduate, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faSpinner, faEye, faEyeSlash, faLock, faShoppingBag, faGraduationCap, faPhotoVideo, faProjectDiagram, faHome, faTimes, faTrashAlt, faPlus, faSignOutAlt, faUsers, faEdit, faEnvelope, faUserGraduate } from '@fortawesome/free-solid-svg-icons'
 
 export const UserIcon = (props) => (
     <Icon icon={faUser} {...props} />
@@ -16,6 +16,10 @@ export const RemoveIcon = (props) => (
 
 export const EditIcon = (props) => (
     <Icon icon={faEdit} {...props} />
+);
+
+export const FileIcon = (props) => (
+    <Icon icon={faFilePdf} {...props} />
 );
 
 export const PlusIcon = (props) => (
@@ -48,6 +52,10 @@ export const EmailIcon = (props) => (
 
 export const MediaIcon = (props) => (
     <Icon icon={faPhotoVideo} {...props} />
+);
+
+export const ModelingIcon = (props) => (
+    <Icon icon={faFileAlt} {...props} />
 );
 
 export const SocialNetworkIcon = (props) => (

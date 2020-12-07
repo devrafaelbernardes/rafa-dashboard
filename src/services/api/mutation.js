@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { BAG, IMAGE, MEDIA, SOCIAL_NETWORK, COURSE, COURSE_STUDENT, COURSE_ACCESS, STUDENT, COURSE_VIDEO, VIDEO, ADMIN, COURSE_MATERIAL, MATERIAL } from './responseAPI';
+import { BAG, IMAGE, MEDIA, SOCIAL_NETWORK, COURSE, COURSE_STUDENT, COURSE_ACCESS, STUDENT, COURSE_VIDEO, VIDEO, ADMIN, COURSE_MATERIAL, MATERIAL, MODELING } from './responseAPI';
 
 export const DO_LOGIN = gql`
     mutation MutationLoginAdmin($input : InputLoginAdmin){
@@ -99,12 +99,40 @@ export const REMOVE_MEDIA = gql`
     }
 `;
 
+export const REMOVE_MODELING = gql`
+    mutation MutationRemoveModeling($input : InputRemove){
+        response : removeModeling(input : $input){
+            ${MODELING.ID}
+            ${MODELING.NAME}
+            ${MODELING.LINK}
+            ${MODELING.IMAGE}{
+                ${IMAGE.ID}
+                ${IMAGE.URL}
+            }
+        }
+    }
+`;
+
 export const CREATE_MEDIA = gql`
     mutation MutationCreateMedia($input : InputCreateMedia, $image : Upload){
         response : createMedia(input : $input, image : $image){
             ${MEDIA.ID}
             ${MEDIA.LINK}
             ${MEDIA.IMAGE}{
+                ${IMAGE.ID}
+                ${IMAGE.URL}
+            }
+        }
+    }
+`;
+
+export const CREATE_MODELING = gql`
+    mutation MutationCreateModeling($input : InputCreateModeling, $image : Upload, $file : Upload){
+        response : createModeling(input : $input, file : $file, image : $image){
+            ${MODELING.ID}
+            ${MODELING.NAME}
+            ${MODELING.LINK}
+            ${MODELING.IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}
             }
@@ -310,6 +338,12 @@ export const SEND_EMAIL_TO_COURSE = gql`
 export const SEND_EMAIL_TO_NO_COURSE = gql`
     mutation MutationSendEmailToNoCourse($input : InputSendEmailToNoCourse){
         response : sendEmailToNoCourse(input : $input)
+    }
+`;
+
+export const SEND_MODELING_EMAIL = gql`
+    mutation MutationSendModelingEmail($input : InputSendModelingEmail){
+        response : sendModelingEmail(input : $input)
     }
 `;
 

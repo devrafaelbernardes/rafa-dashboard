@@ -38,6 +38,9 @@ export const TextPortuguese = {
     BUTTON: {
         OPTIONAL: 'Opcional',
     },
+    MODELING: {
+        FILE_LINK: 'Veja o arquivo',
+    },
     REMOVE_CONTAINER: {
         TITLE: 'Quer mesmo remover?',
         REMOVE: 'Sim',
@@ -51,6 +54,7 @@ export const TextPortuguese = {
         BUTTON_STUDENTS: 'Alunos',
         BUTTON_BAG: 'Bolsas',
         BUTTON_MEDIA: 'Mídias',
+        BUTTON_MODELING: 'Modelagens',
         BUTTON_PROFILE: 'Perfil',
         BUTTON_COURSE: 'Cursos',
         BUTTON_EMAIL: 'Emails',
@@ -322,6 +326,24 @@ export const TextPortuguese = {
             SUBTITLE: 'Clique na mídia e arraste para onde quer colocá-la.',
         },
     },
+    PAGE_AUTH_MODELING: {
+        MENU: {
+            BUTTON_HOME: 'Modelagens',
+            BUTTON_ADD: 'Adicionar',
+            BUTTON_EMAILS: 'Emails',
+        },
+        ADD: {
+            TITLE: 'Adicione uma nova modelagem',
+        },
+        EMAILS: {
+            TITLE: 'Envie um email com a modelagem',
+        },
+        HOME: {
+            TITLE: 'Modelagens',
+            BUTTON_REMOVE: 'Remover',
+            BUTTON_SEND_EMAIL: 'Enviar email',
+        },
+    },
     PAGE_AUTH_SOCIAL_NETWORK: {
         MENU: {
             BUTTON_HOME: 'Rede sociais',
@@ -366,6 +388,14 @@ export const TextPortuguese = {
         TITLE: 'Enviar email de acesso ao curso',
         SUBTITLE: 'O email pode ser enviado para qualquer pessoa.',
         EMAIL: 'E-mail do aluno',
+        BUTTON_SUBMIT: 'Enviar',
+        SUCCESS: 'Enviado com sucesso.',
+        ERROR: 'Erro ao enviar o email, por favor verifique se os dados são válidos.',
+    },
+    FORM_SEND_MODELING: {
+        TITLE: 'Enviar email com a modelagem',
+        SUBTITLE: 'Modelagem:',
+        EMAIL: 'E-mail da pessoa',
         BUTTON_SUBMIT: 'Enviar',
         SUCCESS: 'Enviado com sucesso.',
         ERROR: 'Erro ao enviar o email, por favor verifique se os dados são válidos.',
@@ -426,6 +456,14 @@ export const TextPortuguese = {
     FORM_ADD_MEDIA: {
         LINK: 'Link da mídia',
         BUTTON_IMAGE: 'Buscar foto da mídia',
+        BUTTON_SUBMIT: 'Salvar',
+        SUCCESS_UPDATE: 'Adicionada com sucesso.',
+        ERROR_UPDATE: 'Erro ao adicionar, por favor tente novamente mais tarde.',
+    },
+    FORM_ADD_MODELING: {
+        NAME: 'Nome da modelagem',
+        BUTTON_IMAGE: 'Buscar foto da modelagem',
+        BUTTON_MODELING: 'Buscar modelagem',
         BUTTON_SUBMIT: 'Salvar',
         SUCCESS_UPDATE: 'Adicionada com sucesso.',
         ERROR_UPDATE: 'Erro ao adicionar, por favor tente novamente mais tarde.',

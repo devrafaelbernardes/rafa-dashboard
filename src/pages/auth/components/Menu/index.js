@@ -8,11 +8,12 @@ import BagURL from 'routes/URLs/BagURL';
 import CoursesURL from 'routes/URLs/CoursesURL';
 import HomeURL from 'routes/URLs/HomeURL';
 import MediaURL from 'routes/URLs/MediaURL';
+import ModelingURL from 'routes/URLs/ModelingURL';
 import ProfileURL from 'routes/URLs/ProfileURL';
 import SocialNetworkURL from 'routes/URLs/SocialNetworkURL';
 import Texts from 'config/Texts';
 import List from 'components/List';
-import { HomeIcon, UserIcon, BagIcon, CourseIcon, MediaIcon, SocialNetworkIcon, LogoutIcon, UsersIcon, EmailIcon } from 'components/Icons';
+import { HomeIcon, UserIcon, BagIcon, CourseIcon, MediaIcon, SocialNetworkIcon, LogoutIcon, UsersIcon, EmailIcon, ModelingIcon } from 'components/Icons';
 import StudentsURL from 'routes/URLs/StudentsURL';
 import EmailsURL from 'routes/URLs/EmailsURL';
 
@@ -83,6 +84,13 @@ export function Menu({ ...props }) {
             isNavLink: true,
             to: MediaURL().REDIRECT.BASE,
             icon : MediaIcon,
+        },
+        {
+            text: TEXTS.BUTTON_MODELING,
+            exact: false,
+            isNavLink: true,
+            to: ModelingURL().REDIRECT.BASE,
+            icon : ModelingIcon,
         },
         {
             text: TEXTS.BUTTON_SOCIAL_NETWORK,

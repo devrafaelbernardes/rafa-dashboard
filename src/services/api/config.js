@@ -50,7 +50,9 @@ const link = split(
 
 export const client = new ApolloClient({
 	link: authLink.concat(link),
-	cache: new InMemoryCache()
+	cache: new InMemoryCache({
+		resultCaching: false
+	})
 });
 
 export const objectPagination = ({

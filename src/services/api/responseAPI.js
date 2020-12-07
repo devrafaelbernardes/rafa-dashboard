@@ -146,6 +146,16 @@ export const MEDIA = {
     CREATED_AT : 'created_at',
 };
 
+export const MODELING = {
+    ID : 'id',
+    LINK : 'link',
+    NAME : 'name',
+    DESCRIPTION : 'description',
+    IMAGE : 'image',
+    IS_ACTIVE : 'is_active',
+    CREATED_AT : 'created_at',
+};
+
 export const PAGE_INFO = {
     TOTAL_ITEMS: 'total_items',
     TOTAL_PAGES: 'total_pages',

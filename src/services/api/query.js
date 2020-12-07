@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { ADMIN, IMAGE, BAG, PAGINATION, MEDIA, SOCIAL_NETWORK, PAGE_INFO, COURSE, COURSE_STUDENT, STUDENT, COURSE_ACCESS, COURSE_VIDEO, VIDEO, COURSE_MATERIAL, MATERIAL, EMAIL } from './responseAPI';
+import { ADMIN, IMAGE, BAG, PAGINATION, MEDIA, SOCIAL_NETWORK, PAGE_INFO, COURSE, COURSE_STUDENT, STUDENT, COURSE_ACCESS, COURSE_VIDEO, VIDEO, COURSE_MATERIAL, MATERIAL, EMAIL, MODELING } from './responseAPI';
 
 export const GET_CURRENTY_USER = gql`{   
     response : me_admin{
@@ -50,6 +50,22 @@ export const GET_BAG = gql`
             ${BAG.SECOND_IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}
+            }
+        }
+    }
+`;
+
+export const GET_MODELINGS = gql`
+    query QueryGetMedias($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
+        response : modelings(pagination : $pagination, orderBy : $orderBy){
+            ${PAGINATION.ITEMS} {
+                ${MODELING.ID}
+                ${MODELING.NAME}
+                ${MODELING.LINK}
+                ${MODELING.IMAGE}{
+                    ${IMAGE.ID}
+                    ${IMAGE.URL}
+                }
             }
         }
     }
@@ -268,6 +284,20 @@ export const GET_COURSE = gql`
             ${COURSE.COUNT_STUDENTS}
             ${COURSE.COUNT_VIDEOS}
             ${COURSE.PROFILE_IMAGE}{
+                ${IMAGE.ID}
+                ${IMAGE.URL}
+            }
+        }
+    }
+`;
+
+export const GET_MODELING = gql`
+    query QueryGetModeling($id : ID){
+        response : modeling(id : $id){
+            ${MODELING.ID}
+            ${MODELING.NAME}
+            ${MODELING.LINK}
+            ${MODELING.IMAGE}{
                 ${IMAGE.ID}
                 ${IMAGE.URL}
             }
