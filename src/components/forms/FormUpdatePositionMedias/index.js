@@ -17,12 +17,12 @@ import { objectPagination } from 'services/api/config';
 import objectQuery, { GET_MEDIAS } from 'services/api/query';
 import ComponentLoading from 'components/ComponentLoading';
 
-export function FormUpdatePositionMedias({ children, ...props }) {
+export function FormUpdatePositionMedias({ children, isLandingPage = false, ...props }) {
     const [medias, setMedias] = useState([]);
     const [positions, setPositions] = useState([]);
     const [result, setResult] = useState("");
     const { colors } = useContext(ThemeContext);
-    const { data: dataGetMedias, loading: loadingGetMedias, error: errorGetMedias } = useQuery(GET_MEDIAS, objectQuery(
+    const { data: dataGetMedias, loading: loadingGetMedias, error: errorGetMedias } = useQuery(GET_MEDIAS(isLandingPage), objectQuery(
         objectPagination({
             orderBy: [{ column: MEDIA.POSITION, order: "asc" }],
         })

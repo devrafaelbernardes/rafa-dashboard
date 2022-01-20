@@ -71,9 +71,9 @@ export const GET_MODELINGS = gql`
     }
 `;
 
-export const GET_MEDIAS = gql`
+export const GET_MEDIAS = (isLandingPage = false) => gql`
     query QueryGetMedias($pagination : InputPagination, $orderBy : [InputOrderQuery!]){
-        response : medias(pagination : $pagination, orderBy : $orderBy){
+        response : medias(is_landding_page: ${isLandingPage}, pagination : $pagination, orderBy : $orderBy){
             ${PAGINATION.ITEMS} {
                 ${MEDIA.ID}
                 ${MEDIA.LINK}

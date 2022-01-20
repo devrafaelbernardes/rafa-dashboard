@@ -13,9 +13,10 @@ import ProfileURL from 'routes/URLs/ProfileURL';
 import SocialNetworkURL from 'routes/URLs/SocialNetworkURL';
 import Texts from 'config/Texts';
 import List from 'components/List';
-import { HomeIcon, UserIcon, BagIcon, CourseIcon, MediaIcon, SocialNetworkIcon, LogoutIcon, UsersIcon, EmailIcon, ModelingIcon } from 'components/Icons';
+import { HomeIcon, UserIcon, BagIcon, CourseIcon, MediaIcon, SocialNetworkIcon, LogoutIcon, UsersIcon, EmailIcon, ModelingIcon, LandingPageIcon } from 'components/Icons';
 import StudentsURL from 'routes/URLs/StudentsURL';
 import EmailsURL from 'routes/URLs/EmailsURL';
+import LandingPageURL from 'routes/URLs/LandingPageURL';
 
 export function Menu({ ...props }) {
     const [image, setImage] = useState(null);
@@ -42,6 +43,13 @@ export function Menu({ ...props }) {
             isNavLink: true,
             to: HomeURL().REDIRECT.BASE,
             icon : HomeIcon,
+        },
+        {
+            text: TEXTS.BUTTON_LANDING_PAGE,
+            exact: true,
+            isNavLink: true,
+            to: LandingPageURL().REDIRECT.BASE,
+            icon : LandingPageIcon,
         },
         {
             text: TEXTS.BUTTON_PROFILE,

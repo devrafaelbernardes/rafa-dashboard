@@ -9,3 +9,11 @@ export const Container = styled(Row)`
 export const Image = styled(ImageDefault)`
     width: 100% !important;
 `;
+
+export const Title = styled(Row)`
+    width: 100% !important;
+    font-size: 25px;
+    color: ${({ theme }) => theme.colors.text_dark};
+    text-align: center;
+    text-transform: uppercase;
+`;

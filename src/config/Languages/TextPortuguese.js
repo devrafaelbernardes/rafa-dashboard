@@ -51,6 +51,7 @@ export const TextPortuguese = {
     },
     MENU_PAGES_AUTH: {
         BUTTON_HOME: 'Início',
+        BUTTON_LANDING_PAGE: 'Website',
         BUTTON_STUDENTS: 'Alunos',
         BUTTON_BAG: 'Bolsas',
         BUTTON_MEDIA: 'Mídias',
@@ -326,6 +327,24 @@ export const TextPortuguese = {
             SUBTITLE: 'Clique na mídia e arraste para onde quer colocá-la.',
         },
     },
+    PAGE_AUTH_LANDING_PAGE: {
+        MENU: {
+            BUTTON_HOME: 'Website',
+            BUTTON_ADD: 'Adicionar mídia',
+            BUTTON_UPDATE_POSITION: 'Alterar ordem',
+        },
+        ADD: {
+            TITLE: 'Adicione uma nova mídia',
+        },
+        HOME: {
+            TITLE: 'Mídias',
+            BUTTON_REMOVE: 'Remover',
+        },
+        UPDATE_POSITION: {
+            TITLE: 'Altere a ordem das mídias',
+            SUBTITLE: 'Clique na mídia e arraste para onde quer colocá-la.',
+        },
+    },
     PAGE_AUTH_MODELING: {
         MENU: {
             BUTTON_HOME: 'Modelagens',
@@ -454,6 +473,7 @@ export const TextPortuguese = {
         ERROR_UPDATE: 'Erro ao adicionar, por favor tente novamente mais tarde.',
     },
     FORM_ADD_MEDIA: {
+        TITLE: 'Titulo da mídia',
         LINK: 'Link da mídia',
         BUTTON_IMAGE: 'Buscar foto da mídia',
         BUTTON_SUBMIT: 'Salvar',

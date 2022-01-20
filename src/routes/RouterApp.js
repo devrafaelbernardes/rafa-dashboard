@@ -32,6 +32,8 @@ import SocialNetwork from 'pages/auth/SocialNetwork';
 // PAGES DEFAULT
 import HomeDefault from 'pages/default/Home';
 import Logon from 'pages/default/Logon';
+import LandingPageURL from './URLs/LandingPageURL';
+import LandingPage from 'pages/auth/LandingPage';
 
 export function RouterApp() {
     const CONNECTED_LINK = HomeURL().REDIRECT.BASE;
@@ -76,6 +78,11 @@ export function RouterApp() {
             <ProtectedRoute
                 path={MediaURL().ROUTER.BASE}
                 componentAuthenticated={Media}
+                redirectNotAuthenticatedURL={DESCONNECTED_LINK}
+            />
+            <ProtectedRoute
+                path={LandingPageURL().ROUTER.BASE}
+                componentAuthenticated={LandingPage}
                 redirectNotAuthenticatedURL={DESCONNECTED_LINK}
             />
             <ProtectedRoute

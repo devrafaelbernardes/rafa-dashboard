@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { Container, Image } from './styles';
+import { Container, Image, Title } from './styles';
 
 import Link from 'components/Link';
 
-export function Media({ image = null, link = "", ...props }) {
+export function Media({ image = null, link = "", title = "", ...props }) {
     return (
         <Container
             {...props}
@@ -16,6 +16,7 @@ export function Media({ image = null, link = "", ...props }) {
                 fluid
                 src={image}
             />
+            {title && <Title>{title}</Title>}
         </Container>
     );
 }

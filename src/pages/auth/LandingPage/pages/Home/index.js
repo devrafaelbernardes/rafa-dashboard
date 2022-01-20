@@ -16,7 +16,7 @@ import { RemoveIcon } from 'components/Icons';
 
 const Item = memo(({ onRemove, ...props }) => {
     const [tryRemove, setTryRemove] = useState(false);
-    const TEXTS = Texts.PAGE_AUTH_MEDIA.HOME;
+    const TEXTS = Texts.PAGE_AUTH_LANDING_PAGE.HOME;
 
     return (
         <MediaContainer xs="12" sm="12" md="6" lg="4">
@@ -44,13 +44,13 @@ const Item = memo(({ onRemove, ...props }) => {
 
 export function Home() {
     const [medias, setMedias] = useState([]);
-    const { data, loading, error } = useQuery(GET_MEDIAS(false), objectQuery(
+    const { data, loading, error } = useQuery(GET_MEDIAS(true), objectQuery(
         objectPagination({
             orderBy: [{ column: MEDIA.POSITION, order: "asc" }],
         })
     ));
     const [removeMedia, { data: dataRemove, error: errorRemove }] = useMutation(REMOVE_MEDIA);
-    const TEXTS = Texts.PAGE_AUTH_MEDIA.HOME;
+    const TEXTS = Texts.PAGE_AUTH_LANDING_PAGE.HOME;
 
     useEffect(() => {
         (async () => {

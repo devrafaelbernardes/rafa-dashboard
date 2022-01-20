@@ -15,7 +15,8 @@ import Texts from 'config/Texts';
 import { MEDIA, IMAGE } from 'services/api/responseAPI';
 import objectMutation, { CREATE_MEDIA } from 'services/api/mutation';
 
-export function FormAddMedia({ ...props }) {
+export function FormAddMedia({ isLandingPage = false, ...props }) {
+    const [title, setTitle] = useState(null);
     const [link, setLink] = useState(null);
     const [image, setImage] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
@@ -23,7 +24,7 @@ export function FormAddMedia({ ...props }) {
     const { colors } = useContext(ThemeContext);
     const TEXTS = Texts.FORM_ADD_MEDIA;
 
-    const [submit, { data, loading, error }] = useMutation(CREATE_MEDIA, objectMutation({ link }, { image }));
+    const [submit, { data, loading, error }] = useMutation(CREATE_MEDIA, objectMutation({ link, title, is_landing_page: isLandingPage }, { image }));
 
     useEffect(() => {
         let MOUNTED = true;
@@ -82,6 +83,7 @@ export function FormAddMedia({ ...props }) {
 
     const resetInputs = () => {
         setLink("");
+        setTitle("");
         setImage(null);
         setImagePreview(null);
     }
@@ -97,6 +99,7 @@ export function FormAddMedia({ ...props }) {
                         <MediaPreview>
                             <Media
                                 link={link}
+                                title={title}
                                 image={imagePreview}
                             />
                         </MediaPreview>
@@ -112,6 +115,16 @@ export function FormAddMedia({ ...props }) {
                             {TEXTS.BUTTON_IMAGE}
                         </InputFile>
                     </ContainerInputFile>
+                </Line>
+                <Line>
+                    <Input
+                        required={false}
+                        name={"title"}
+                        value={title}
+                        label={TEXTS.TITLE}
+                        placeholder={TEXTS.TITLE}
+                        onChange={e => setTitle(String(e.target.value))}
+                    />
                 </Line>
                 <Line>
                     <Input
